@@ -485,6 +485,69 @@
     color: var(--text-light);
   }
 
+  /* Activity Cards */
+  .act-card {
+    display: flex;
+    gap: 16px;
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .act-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: var(--primary-light); }
+  .act-card .act-img {
+    width: 110px;
+    height: 90px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    background: #f0f4f8;
+  }
+  .act-card .act-info { flex: 1; }
+  .act-card .act-info h4 { font-size: 1em; margin-bottom: 4px; color: var(--primary); }
+  .act-card .act-info .act-meta { font-size: 0.8em; color: var(--text-light); margin-bottom: 6px; }
+  .act-card .act-info .act-desc { font-size: 0.85em; line-height: 1.5; }
+  .act-card .act-info .act-tags { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+  .act-tag {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 0.7em; font-weight: 600;
+  }
+  .act-tag.free { background: #e8f8ef; color: var(--success); }
+  .act-tag.paid { background: #fef9e7; color: var(--warning); }
+  .act-tag.food { background: #fdedec; color: var(--danger); }
+  .act-tag.nature { background: #eaf2f8; color: var(--primary-light); }
+  .act-tag.family { background: #f5eef8; color: #8e44ad; }
+  .act-tag.photo { background: #fdf2e9; color: var(--accent); }
+
+  .phase-banner {
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    margin: 24px 0 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .phase-banner h3 { font-size: 1.2em; }
+  .phase-banner .phase-sub { font-size: 0.85em; opacity: 0.9; }
+  .phase-banner.wedding-phase { background: linear-gradient(135deg, #e67e22, #f39c12); }
+  .phase-banner.kalgoorlie-phase { background: linear-gradient(135deg, #8e44ad, #9b59b6); }
+  .phase-banner.perth-phase { background: linear-gradient(135deg, #2980b9, #3498db); }
+
+  @media (max-width: 600px) {
+    .act-card { flex-direction: column; }
+    .act-card .act-img { width: 100%; height: 60px; font-size: 1.8em; }
+  }
+
   /* Print */
   @media print {
     .tab-nav { display: none; }
@@ -778,228 +841,757 @@
 <!-- ========== ITINERARY ========== -->
 <div class="tab-content" id="tab-itinerary">
 
-  <!-- Day 1 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 1</span> <span class="day-date">Selasa, 2 Jun</span></div>
-      <span class="day-tag">Tiba di Perth</span>
+  <!-- ============ PHASE 1: HALLS HEAD ============ -->
+  <div class="phase-banner">
+    <div>
+      <h3>Fasa 1: Halls Head (Mandurah Area)</h3>
+      <div class="phase-sub">2-8 Jun | 6 Malam | Airbnb Beth, 2 Baruna Court</div>
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">08:55</div><div class="desc"><h4>Berlepas dari KLIA T1</h4><p>Flight MH125 - Business Class. Check-in awal, enjoy lounge.</p></div></div>
-      <div class="activity"><div class="time-col">14:50</div><div class="desc"><h4>Tiba di Perth Airport</h4><p>Immigration, ambil baggage, collect rental car.</p></div></div>
-      <div class="activity"><div class="time-col">16:30</div><div class="desc"><h4>Check-in Penginapan</h4><p>Settle in, rehat, unpack.</p></div></div>
-      <div class="activity"><div class="time-col">18:30</div><div class="desc"><h4>Dinner</h4><p>Cari halal restaurant berdekatan. Cadangan: Al-Ameen (Northbridge) atau Hajis (Welshpool).</p></div></div>
+    <span class="day-tag">Base: Halls Head</span>
+  </div>
+
+  <!-- Day 1 -->
+  <div class="day-header">
+    <div><span class="day-num">Hari 1</span> <span class="day-date">Selasa, 2 Jun</span></div>
+    <span class="day-tag">Tiba + Settle In</span>
+  </div>
+  <div class="day-body">
+    <div class="act-card">
+      <div class="act-img">&#9992;</div>
+      <div class="act-info">
+        <h4>Berlepas KLIA T1 — MH125</h4>
+        <div class="act-meta">08:55 | KLIA Terminal 1 | Business Class</div>
+        <div class="act-desc">Check-in awal, enjoy Malaysia Airlines Golden Lounge. Flight 5j 55m.</div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127961;</div>
+      <div class="act-info">
+        <h4>Tiba Perth Airport</h4>
+        <div class="act-meta">14:50 | Perth Terminal 1</div>
+        <div class="act-desc">Immigration, ambil baggage, beli SIM card Telstra (AUD $35, 40GB — best outback coverage). Ambil 2 rental van di kaunter.</div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127968;</div>
+      <div class="act-info">
+        <h4>Drive ke Halls Head & Check-in</h4>
+        <div class="act-meta">16:00-17:00 | ~1 jam dari airport | 2 Baruna Court, Halls Head WA 6210</div>
+        <div class="act-desc">Settle in, unpack, rehat. Rumah dekat pantai Halls Head Beach.</div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Groceries + Dinner</h4>
+        <div class="act-meta">18:00 | Mandurah area</div>
+        <div class="act-desc">Beli groceries di <strong>Woolworths Mandurah Forum</strong> (15 min drive). Stock up untuk masak di rumah. Dinner: <strong>Curry Muncher Mandurah</strong> (halal Indian) atau masak sendiri.</div>
+        <div class="act-tags"><span class="act-tag food">Halal</span></div>
+      </div>
     </div>
   </div>
 
   <!-- Day 2 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 2</span> <span class="day-date">Rabu, 3 Jun</span></div>
-      <span class="day-tag">Perth City</span>
+  <div class="day-header">
+    <div><span class="day-num">Hari 2</span> <span class="day-date">Rabu, 3 Jun</span></div>
+    <span class="day-tag">Mandurah Explore</span>
+  </div>
+  <div class="day-body">
+    <div class="info-box">
+      <strong>Hari santai dekat rumah.</strong> Explore area Mandurah yang dekat dengan Halls Head. Sesuai untuk mak bapak — tak perlu drive jauh.
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">09:00</div><div class="desc"><h4>Kings Park & Botanic Garden</h4><p>View terbaik Perth skyline. Free entry. Jalan santai sesuai untuk mak bapak.</p></div></div>
-      <div class="activity"><div class="time-col">11:30</div><div class="desc"><h4>Elizabeth Quay</h4><p>Waterfront area cantik, photo spot, playground.</p></div></div>
-      <div class="activity"><div class="time-col">13:00</div><div class="desc"><h4>Lunch - Northbridge</h4><p>Banyak halal options: kebab, Turkish, Malaysian restaurants.</p></div></div>
-      <div class="activity"><div class="time-col">14:30</div><div class="desc"><h4>Perth Cultural Centre</h4><p>Art Gallery of WA (free), WA Museum Boola Bardip (free).</p></div></div>
-      <div class="activity"><div class="time-col">16:30</div><div class="desc"><h4>Shopping - Murray Street / Hay Street Mall</h4><p>Beli groceries & barang keperluan.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#128044;</div>
+      <div class="act-info">
+        <h4>Mandurah Dolphin Cruise</h4>
+        <div class="act-meta">09:30-11:00 | Mandurah Jetty, 73 Mandurah Terrace | ~15 min dari rumah</div>
+        <div class="act-desc">1 jam cruise di Mandurah Estuary tengok dolphin liar — bottlenose dolphin biasa nampak! Pemandangan pelican, burung laut. Sesuai semua umur termasuk mak bapak.</div>
+        <div class="act-tags"><span class="act-tag paid">~AUD $30/adult</span><span class="act-tag family">Family Friendly</span><span class="act-tag nature">Nature</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127958;</div>
+      <div class="act-info">
+        <h4>Mandurah Boardwalk & Waterfront</h4>
+        <div class="act-meta">11:30-12:30 | Eastern Foreshore, Mandurah</div>
+        <div class="act-desc">Jalan-jalan tepi laut, kedai souvenir, street art. Boardwalk yang cantik untuk photo. Pelican feeding point — pelican datang dekat!</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Lunch — Cicerello's Mandurah</h4>
+        <div class="act-meta">12:30-13:30 | Mandurah Foreshore</div>
+        <div class="act-desc">Famous fish & chips WA. Makan tepi laut. Check menu untuk seafood options (ikan goreng biasa halal-friendly). Atau bawa bekal dari rumah.</div>
+        <div class="act-tags"><span class="act-tag food">Seafood</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127958;</div>
+      <div class="act-info">
+        <h4>Thrombolites at Lake Clifton</h4>
+        <div class="act-meta">14:30-15:30 | Lake Clifton (~30 min south) | Mount John Rd</div>
+        <div class="act-desc">Living fossils — struktur batu karang hidup yang umur 2,000+ tahun. Boardwalk 200m ke tengah tasik. Sangat unik, jarang jumpa di tempat lain. Educational untuk semua.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag nature">Nature</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127749;</div>
+      <div class="act-info">
+        <h4>Halls Head Beach Sunset Walk</h4>
+        <div class="act-meta">16:30-17:30 | 5 min dari rumah</div>
+        <div class="act-desc">Pantai depan rumah! Jalan petang, sunset atas Indian Ocean. Suhu ~15°C, bawak jacket.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag nature">Nature</span></div>
+      </div>
     </div>
   </div>
 
   <!-- Day 3 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 3</span> <span class="day-date">Khamis, 4 Jun</span></div>
-      <span class="day-tag">Fremantle</span>
+  <div class="day-header">
+    <div><span class="day-num">Hari 3</span> <span class="day-date">Khamis, 4 Jun</span></div>
+    <span class="day-tag">Perth City Day Trip</span>
+  </div>
+  <div class="day-body">
+    <div class="info-box">
+      <strong>Day trip ke Perth CBD.</strong> ~1 jam drive dari Halls Head. Keluar awal, balik petang.
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">09:30</div><div class="desc"><h4>Drive ke Fremantle (~30 min)</h4><p>Bandar pelabuhan bersejarah, vibe laidback.</p></div></div>
-      <div class="activity"><div class="time-col">10:00</div><div class="desc"><h4>Fremantle Markets</h4><p>Pasar tradisional sejak 1897. Buah, crafts, souvenirs. Buka Fri-Sun & Public Holiday.</p></div></div>
-      <div class="activity"><div class="time-col">12:00</div><div class="desc"><h4>Fishing Boat Harbour</h4><p>Lunch halal fish & chips. Suasana pelabuhan yang cantik.</p></div></div>
-      <div class="activity"><div class="time-col">14:00</div><div class="desc"><h4>Fremantle Prison (optional)</h4><p>UNESCO World Heritage Site. Tour ~1 jam, AUD $24/adult.</p></div></div>
-      <div class="activity"><div class="time-col">15:30</div><div class="desc"><h4>Cottesloe Beach</h4><p>Pantai ikonik Perth. Sunset view cantik walaupun musim sejuk.</p></div></div>
-      <div class="info-box warning">
-        <strong>Nota:</strong> Fremantle Markets tutup Mon-Thu. Hari Khamis pasar tutup. Boleh swap hari ini dengan Hari 5 (Jumaat) supaya dapat visit market.
+    <div class="act-card">
+      <div class="act-img">&#127795;</div>
+      <div class="act-info">
+        <h4>Kings Park & Botanic Garden</h4>
+        <div class="act-meta">09:30-11:00 | Fraser Ave, Kings Park | 400 hektar</div>
+        <div class="act-desc">Taman terbesar dalam kota di dunia. View panorama Perth skyline + Swan River yang memukau. DNA Tower (spiral staircase), War Memorial, Lotterywest Federation Walkway (jambatan atas pokok). Jalan santai, sesuai mak bapak.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag nature">Nature</span><span class="act-tag photo">Photo Spot</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127747;</div>
+      <div class="act-info">
+        <h4>Elizabeth Quay</h4>
+        <div class="act-meta">11:15-12:15 | Elizabeth Quay, Perth</div>
+        <div class="act-desc">Waterfront modern Perth. Spanda sculpture (15m tall), BHP Water Park (kanak-kanak), Bell Tower. Cantik untuk photo. Dekat dengan Perth CBD walking distance.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Lunch — Northbridge Halal Strip</h4>
+        <div class="act-meta">12:30-13:30 | William St / James St, Northbridge</div>
+        <div class="act-desc">Pusat makanan halal Perth! Pilihan: <strong>Al-Ameen</strong> (Middle Eastern, nasi Arab), <strong>Makan Makan</strong> (Malaysian — nasi lemak, mee goreng!), <strong>Crust & Craft</strong> (Turkish pide). Semua halal certified.</div>
+        <div class="act-tags"><span class="act-tag food">Halal Certified</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127963;</div>
+      <div class="act-info">
+        <h4>WA Museum Boola Bardip</h4>
+        <div class="act-meta">14:00-15:30 | Perth Cultural Centre, James St</div>
+        <div class="act-desc">Museum baru (2020), world-class. Sejarah WA, Aboriginal art, dinosaur fossils, meteorites, blue whale skeleton. FREE entry! Highly recommended untuk semua umur.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128717;</div>
+      <div class="act-info">
+        <h4>Murray Street Mall + Hay Street Mall</h4>
+        <div class="act-meta">15:30-17:00 | Perth CBD</div>
+        <div class="act-desc">Shopping street utama Perth. David Jones, Myer, H&M, Uniqlo, JB Hi-Fi (electronics murah). Beli keperluan & window shopping. Jangan lupa beli adapter plug Australia kalau belum ada.</div>
+        <div class="act-tags"><span class="act-tag paid">Shopping</span></div>
       </div>
     </div>
   </div>
 
   <!-- Day 4 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 4</span> <span class="day-date">Jumaat, 5 Jun</span></div>
-      <span class="day-tag">Prep Wedding + Explore</span>
+  <div class="day-header">
+    <div><span class="day-num">Hari 4</span> <span class="day-date">Jumaat, 5 Jun</span></div>
+    <span class="day-tag">Fremantle + Wildlife</span>
+  </div>
+  <div class="day-body">
+    <div class="info-box">
+      <strong>Fremantle Markets buka hari Jumaat!</strong> Perfect timing. Fremantle ~45 min dari Halls Head.
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">09:00</div><div class="desc"><h4>Caversham Wildlife Park</h4><p>Pegang koala, jumpa kangaroo, wombat. AUD ~$35/adult. Best wildlife park dekat Perth.</p></div></div>
-      <div class="activity"><div class="time-col">12:00</div><div class="desc"><h4>Swan Valley</h4><p>Chocolate factory (Margaret River Chocolate Co.), Morish Nuts, honey tasting.</p></div></div>
-      <div class="activity"><div class="time-col">15:00</div><div class="desc"><h4>Shopping / Prep Majlis</h4><p>Beli buah tangan / hantaran untuk tuan rumah. Siapkan baju untuk esok.</p></div></div>
-      <div class="activity"><div class="time-col">18:00</div><div class="desc"><h4>Dinner - Family</h4><p>Makan besar sebelum hari majlis.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#128059;</div>
+      <div class="act-info">
+        <h4>Caversham Wildlife Park</h4>
+        <div class="act-meta">08:30-11:00 | Whiteman Park, Lord St, Whiteman | ~1.5 jam dari Halls Head</div>
+        <div class="act-desc">THE BEST wildlife park dekat Perth. Pegang koala (photo session), bagi makan kangaroo & wallaby (tangan terbuka!), tengok wombat, Tasmanian devil, emu. Farm show (kambing, biri-biri). Budak-budak & mak bapak mesti suka!</div>
+        <div class="act-tags"><span class="act-tag paid">~AUD $35/adult</span><span class="act-tag family">Family Friendly</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Lunch — Fremantle (on the way back south)</h4>
+        <div class="act-meta">12:00-13:00 | Fishing Boat Harbour, Fremantle</div>
+        <div class="act-desc">Makan tepi harbour. Fish & chips classic. Atau cari <strong>Brika Greek Kitchen</strong> (halal-friendly grilled fish/lamb). View kapal-kapal nelayan cantik.</div>
+        <div class="act-tags"><span class="act-tag food">Seafood</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127978;</div>
+      <div class="act-info">
+        <h4>Fremantle Markets</h4>
+        <div class="act-meta">13:30-15:00 | Henderson St & South Terrace | Buka Fri 9-8, Sat 9-6, Sun 9-6</div>
+        <div class="act-desc">Pasar tradisional sejak 1897! 150+ stalls — buah-buahan segar, keju, roti artisan, handicraft, didgeridoo, opal jewellery, kulit kangaroo, souvenirs. Wajib datang! Suasana vibrant, buskers, live music.</div>
+        <div class="act-tags"><span class="act-tag paid">Free Entry</span><span class="act-tag photo">Photo Spot</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127961;</div>
+      <div class="act-info">
+        <h4>Fremantle Prison</h4>
+        <div class="act-meta">15:30-16:30 | 1 The Terrace, Fremantle | Optional</div>
+        <div class="act-desc">UNESCO World Heritage Site. Penjara tahanan zaman convict (1855-1991). Doing Time tour 75 min — jalan dalam sel, cerita sejarah seram & menarik. Bangunan limestone cantik.</div>
+        <div class="act-tags"><span class="act-tag paid">AUD $24/adult</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127749;</div>
+      <div class="act-info">
+        <h4>Cottesloe Beach Sunset</h4>
+        <div class="act-meta">17:00-17:30 | Marine Parade, Cottesloe | ~20 min dari Fremantle</div>
+        <div class="act-desc">Pantai paling ikonik Perth. Pine trees, white sand, turquoise water. Sunset ~5:20 PM (winter). Quick stop untuk photo, jalan tepi pantai.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag photo">Photo Spot</span><span class="act-tag nature">Nature</span></div>
+      </div>
+    </div>
+    <div class="info-box warning">
+      <strong>Prep untuk esok:</strong> Siapkan baju untuk majlis kahwin. Beli buah tangan untuk Mak Imah kalau belum. Drive Halls Head → Dayton ~1 jam.
     </div>
   </div>
 
-  <!-- Day 5 - WEDDING -->
-  <div>
-    <div class="day-header" style="background: linear-gradient(135deg, #e67e22, #f39c12);">
-      <div><span class="day-num">Hari 5</span> <span class="day-date">Sabtu, 6 Jun</span></div>
-      <span class="day-tag" style="background: white; color: var(--accent);">MAJLIS KAHWIN</span>
+  <!-- ============ PHASE 2: WEDDING ============ -->
+  <div class="phase-banner wedding-phase">
+    <div>
+      <h3>Majlis Perkahwinan</h3>
+      <div class="phase-sub">6 Jun (Sabtu) | 5 Sudbury Way, Dayton</div>
     </div>
-    <div class="day-body" style="border-color: var(--accent);">
-      <div class="activity"><div class="time-col">Pagi</div><div class="desc"><h4>Bersiap untuk Majlis</h4><p>Dress code: TBD. Confirm dengan Mak Imah.</p></div></div>
-      <div class="activity"><div class="time-col">TBD</div><div class="desc"><h4>Majlis Perkahwinan Anak Mak Imah</h4><p><strong>Lokasi: 5 Sudbury Way, Dayton, Perth WA 6055</strong><br>Suburb Dayton ~25 min dari Perth CBD. Kawasan residensi.</p></div></div>
-      <div class="activity"><div class="time-col">Petang</div><div class="desc"><h4>Lepak dengan family Mak Imah</h4><p>Catch up, bergambar, enjoy.</p></div></div>
-      <div class="info-box">
-        <strong>Perlu confirm:</strong> Waktu majlis, dress code, apa perlu bawa, parking arrangement.
+    <span class="day-tag" style="background: white; color: var(--accent);">WEDDING DAY</span>
+  </div>
+
+  <!-- Day 5 -->
+  <div class="day-header" style="background: linear-gradient(135deg, #e67e22, #f39c12);">
+    <div><span class="day-num">Hari 5</span> <span class="day-date">Sabtu, 6 Jun</span></div>
+    <span class="day-tag" style="background: white; color: var(--accent);">MAJLIS KAHWIN</span>
+  </div>
+  <div class="day-body" style="border-color: var(--accent);">
+    <div class="act-card" style="border-color: var(--accent);">
+      <div class="act-img" style="background:#fef9e7;">&#128141;</div>
+      <div class="act-info">
+        <h4>Majlis Perkahwinan Anak Mak Imah</h4>
+        <div class="act-meta">Waktu: TBD | 5 Sudbury Way, Dayton, Perth WA 6055 | ~1 jam dari Halls Head</div>
+        <div class="act-desc">
+          Tujuan utama perjalanan ini! Suburb Dayton di utara Perth, kawasan residensi tenang. <br>
+          <strong>Perlu confirm:</strong> Waktu tepat, dress code, parking, apa nak bawa.
+        </div>
+        <div class="act-tags"><span class="act-tag family">Family Event</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127881;</div>
+      <div class="act-info">
+        <h4>Lepak dengan Family Mak Imah</h4>
+        <div class="act-meta">Selepas majlis</div>
+        <div class="act-desc">Catch up, bergambar ramai-ramai, makan bersama. Quality time dengan keluarga sebelum ke Kalgoorlie.</div>
       </div>
     </div>
   </div>
 
   <!-- Day 6 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 6</span> <span class="day-date">Ahad, 7 Jun</span></div>
-      <span class="day-tag">Rehat + Shopping</span>
+  <div class="day-header">
+    <div><span class="day-num">Hari 6</span> <span class="day-date">Ahad, 7 Jun</span></div>
+    <span class="day-tag">Rehat + Shopping + Prep Kalgoorlie</span>
+  </div>
+  <div class="day-body">
+    <div class="info-box">
+      <strong>Recovery day lepas majlis + prep untuk drive Kalgoorlie esok.</strong> Check-out Halls Head esok pagi (before 10AM).
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">10:00</div><div class="desc"><h4>Bangun lambat / Rehat</h4><p>Recovery day lepas majlis.</p></div></div>
-      <div class="activity"><div class="time-col">12:00</div><div class="desc"><h4>Harbour Town (Outlet Shopping)</h4><p>Premium outlet brands. Nike, Adidas, Coach, etc. Harga murah dari retail.</p></div></div>
-      <div class="activity"><div class="time-col">15:00</div><div class="desc"><h4>DFO Perth / Watertown</h4><p>Lebih banyak outlet options.</p></div></div>
-      <div class="activity"><div class="time-col">18:00</div><div class="desc"><h4>Dinner</h4><p>Prep untuk drive Kalgoorlie esok.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#128164;</div>
+      <div class="act-info">
+        <h4>Bangun Lambat / Rehat</h4>
+        <div class="act-meta">Pagi | Halls Head</div>
+        <div class="act-desc">Sarapan di rumah, enjoy suasana pantai. Last morning di Halls Head!</div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128717;</div>
+      <div class="act-info">
+        <h4>Harbour Town Perth (Outlet Shopping)</h4>
+        <div class="act-meta">11:00-14:00 | 434 Erindale Rd, Clarkson | ~1 jam dari Halls Head</div>
+        <div class="act-desc">Premium outlet mall — Nike Factory, Adidas, Coach, Calvin Klein, Tommy Hilfiger, Levi's, Puma. Harga 30-70% off retail! Beli winter wear pun boleh. Food court ada halal options.</div>
+        <div class="act-tags"><span class="act-tag paid">Shopping</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128722;</div>
+      <div class="act-info">
+        <h4>Stock Up untuk Kalgoorlie</h4>
+        <div class="act-meta">14:30-15:30 | Woolworths / Coles</div>
+        <div class="act-desc">Beli snacks, air mineral, buah untuk drive esok (6 jam!). Isi minyak PENUH kedua-dua van.</div>
+        <div class="act-tags"><span class="act-tag paid">Groceries</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Last Dinner Sebelum Kalgoorlie</h4>
+        <div class="act-meta">18:00 | Halls Head area</div>
+        <div class="act-desc">Masak sendiri di rumah — last night di Halls Head. Packing semua malam ni. Tidur awal, esok kena drive pagi.</div>
+      </div>
+    </div>
+    <div class="info-box danger">
+      <strong>Esok check-out before 10:00 AM!</strong> Pack semua malam ni. Drive Kalgoorlie start 7 AM — kena isi minyak, semak tayar, download offline maps (Google Maps).
     </div>
   </div>
 
-  <!-- Day 7 -->
-  <div>
-    <div class="day-header" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
-      <div><span class="day-num">Hari 7</span> <span class="day-date">Isnin, 8 Jun</span></div>
-      <span class="day-tag">Drive ke Kalgoorlie</span>
+  <!-- ============ PHASE 3: KALGOORLIE ============ -->
+  <div class="phase-banner kalgoorlie-phase">
+    <div>
+      <h3>Fasa 2: Kalgoorlie — Gold Rush Country</h3>
+      <div class="phase-sub">8-11 Jun | 3 Malam | Airbnb Somerville</div>
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">07:00</div><div class="desc"><h4>Bertolak ke Kalgoorlie</h4><p><strong>~595 km, 6-6.5 jam drive.</strong> Bawak snacks & air. Isi minyak penuh.</p></div></div>
-      <div class="activity"><div class="time-col">10:00</div><div class="desc"><h4>Stop: Merredin (~260 km)</h4><p>Rehat, toilet, isi minyak, brunch. Pekan kecil tapi ada amenities.</p></div></div>
-      <div class="activity"><div class="time-col">13:30</div><div class="desc"><h4>Tiba di Kalgoorlie</h4><p>Check-in accommodation / rumah Mak Imah.</p></div></div>
-      <div class="activity"><div class="time-col">15:00</div><div class="desc"><h4>Lepak di rumah Mak Imah</h4><p>Rehat, catch up, makan bersama.</p></div></div>
-      <div class="info-box warning">
-        <strong>Tips Drive:</strong> Jalan lurus & panjang (Great Eastern Highway). Watch out for kangaroo crossing terutama pagi & petang. Bawak spare water & snacks. Phone signal boleh hilang di certain stretches.
+    <span class="day-tag">595 km dari Perth</span>
+  </div>
+
+  <!-- Day 7 -->
+  <div class="day-header" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
+    <div><span class="day-num">Hari 7</span> <span class="day-date">Isnin, 8 Jun</span></div>
+    <span class="day-tag">Drive ke Kalgoorlie</span>
+  </div>
+  <div class="day-body">
+    <div class="act-card">
+      <div class="act-img">&#128663;</div>
+      <div class="act-info">
+        <h4>Check-out Halls Head & Bertolak</h4>
+        <div class="act-meta">07:00-07:30 | Check-out before 10 AM, tapi start awal</div>
+        <div class="act-desc"><strong>595 km, ~6-6.5 jam drive.</strong> Great Eastern Highway. Jalan lurus panjang melintasi outback Australia. Pemandangan padang gandum, bush, sunset plains. Isi minyak PENUH!</div>
+        <div class="act-tags"><span class="act-tag paid">Petrol ~AUD $80-100/van</span></div>
       </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#9981;</div>
+      <div class="act-info">
+        <h4>Pitstop: Northam</h4>
+        <div class="act-meta">~09:00 | 100 km dari Perth | ~30 min stop</div>
+        <div class="act-desc">Bandar pertama. Toilet, stretch, kopi. Avon River bridge — bangunan heritage. Isi minyak kalau perlu.</div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Pitstop: Merredin (Halfway)</h4>
+        <div class="act-meta">~10:30 | 260 km | Best stop untuk brunch</div>
+        <div class="act-desc">Halfway point! Rehat panjang ~45 min. Makan di cafe, isi minyak. Merredin Peak — granite rock formation, quick 10 min climb kalau ada tenaga.</div>
+        <div class="act-tags"><span class="act-tag food">Brunch Stop</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127961;</div>
+      <div class="act-info">
+        <h4>Tiba Kalgoorlie — Check-in Somerville Airbnb</h4>
+        <div class="act-meta">~14:00 | Check-in after 3 PM</div>
+        <div class="act-desc">Settle in, unpack, rehat dari drive panjang. Rumah Airbnb di Somerville area Kalgoorlie.</div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127969;</div>
+      <div class="act-info">
+        <h4>Visit Rumah Mak Imah</h4>
+        <div class="act-meta">16:00 onwards | Kalgoorlie</div>
+        <div class="act-desc">Lawat Mak Imah! Bawa buah tangan dari Malaysia. Catch up, makan bersama, cerita pasal majlis. Quality family time.</div>
+        <div class="act-tags"><span class="act-tag family">Family Time</span></div>
+      </div>
+    </div>
+    <div class="info-box danger">
+      <strong>Amaran Drive:</strong> JANGAN drive lepas senja (~5 PM). Kangaroo sangat aktif waktu gelap. Speed 110 km/h max. Download offline maps sebelum pergi — signal hilang di beberapa kawasan.
     </div>
   </div>
 
   <!-- Day 8 -->
-  <div>
-    <div class="day-header" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
-      <div><span class="day-num">Hari 8</span> <span class="day-date">Selasa, 9 Jun</span></div>
-      <span class="day-tag">Kalgoorlie Explore</span>
+  <div class="day-header" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
+    <div><span class="day-num">Hari 8</span> <span class="day-date">Selasa, 9 Jun</span></div>
+    <span class="day-tag">Kalgoorlie — Gold City</span>
+  </div>
+  <div class="day-body">
+    <div class="act-card">
+      <div class="act-img">&#9935;</div>
+      <div class="act-info">
+        <h4>KCGM Super Pit Lookout</h4>
+        <div class="act-meta">09:00-10:30 | Outram St, Boulder | Free entry</div>
+        <div class="act-desc">THE highlight Kalgoorlie! Lubang lombong emas terbuka TERBESAR di Australia — 3.5 km panjang, 1.5 km lebar, 600m dalam. Nampak truk besar macam semut! Viewing platform free, panoramic view yang unreal. Wajib datang!</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag photo">Photo Spot</span><span class="act-tag nature">Landmark</span></div>
+      </div>
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">09:00</div><div class="desc"><h4>Super Pit Lookout</h4><p>Lubang lombong emas terbesar Australia. Free viewing platform. Pemandangan gergasi!</p></div></div>
-      <div class="activity"><div class="time-col">11:00</div><div class="desc"><h4>Museum of the Goldfields</h4><p>Sejarah Gold Rush era. Free entry.</p></div></div>
-      <div class="activity"><div class="time-col">13:00</div><div class="desc"><h4>Hannan Street</h4><p>Main street Kalgoorlie. Bangunan heritage, lunch, walk around.</p></div></div>
-      <div class="activity"><div class="time-col">15:00</div><div class="desc"><h4>Masa dengan Mak Imah</h4><p>Spend quality time. Masak sama-sama.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#127963;</div>
+      <div class="act-info">
+        <h4>Museum of the Goldfields</h4>
+        <div class="act-meta">10:45-12:00 | 17 Hannan St, Kalgoorlie | Free entry</div>
+        <div class="act-desc">Sejarah Gold Rush 1890s — emas, mining equipment, kehidupan pelombong, Aboriginal heritage. Gold vault dengan emas sebenar! Lift naik ke atas Ivanhoe Headframe (view 360° Kalgoorlie).</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Lunch — Hannan Street</h4>
+        <div class="act-meta">12:15-13:15 | Hannan St, Kalgoorlie</div>
+        <div class="act-desc">Main street Kalgoorlie. Bangunan heritage cantik zaman Gold Rush. Makan di salah satu cafe. Check untuk halal options — biasanya ada Turkish/Indian restaurant. Atau bawak bekal dari rumah.</div>
+        <div class="act-tags"><span class="act-tag food">Lunch</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127795;</div>
+      <div class="act-info">
+        <h4>Hammond Park</h4>
+        <div class="act-meta">14:00-15:00 | Lyall St, Kalgoorlie | Free</div>
+        <div class="act-desc">Taman kecil tapi best — kangaroo, peacock, burung kakak tua. Mini botanical garden. Sesuai untuk jalan santai, terutama mak bapak. Playground untuk kanak-kanak (kalau ada cucu Mak Imah).</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag family">Family Friendly</span><span class="act-tag nature">Nature</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127969;</div>
+      <div class="act-info">
+        <h4>Petang dengan Mak Imah</h4>
+        <div class="act-meta">15:30 onwards</div>
+        <div class="act-desc">Masak sama-sama, borak, tengok photo album, cerita zaman dulu. Ini yang paling berharga — quality time dengan family.</div>
+        <div class="act-tags"><span class="act-tag family">Family Time</span></div>
+      </div>
     </div>
   </div>
 
   <!-- Day 9 -->
-  <div>
-    <div class="day-header" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
-      <div><span class="day-num">Hari 9</span> <span class="day-date">Rabu, 10 Jun</span></div>
-      <span class="day-tag">Kalgoorlie / Balik Perth</span>
+  <div class="day-header" style="background: linear-gradient(135deg, #8e44ad, #9b59b6);">
+    <div><span class="day-num">Hari 9</span> <span class="day-date">Rabu, 10 Jun</span></div>
+    <span class="day-tag">Coolgardie + Lepak</span>
+  </div>
+  <div class="day-body">
+    <div class="act-card">
+      <div class="act-img">&#127961;</div>
+      <div class="act-info">
+        <h4>Coolgardie Day Trip</h4>
+        <div class="act-meta">09:00-11:30 | ~35 km dari Kalgoorlie (~25 min drive)</div>
+        <div class="act-desc">Ghost town era Gold Rush! Pernah jadi bandar terbesar WA (15,000 penduduk, sekarang ~800). Bayley Street heritage buildings, Coolgardie Cemetery (kubur pelombong zaman 1890s), Ben Prior's Open Air Museum (free outdoor art). Eerie tapi fascinating.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">08:00</div><div class="desc"><h4>Sarapan bersama Mak Imah</h4><p>Last meal sebelum bertolak balik.</p></div></div>
-      <div class="activity"><div class="time-col">09:30</div><div class="desc"><h4>Bertolak balik ke Perth</h4><p>~6 jam drive. Boleh stop di Coolgardie (heritage town) on the way.</p></div></div>
-      <div class="activity"><div class="time-col">10:00</div><div class="desc"><h4>Stop: Coolgardie (~35 km)</h4><p>Gold Rush ghost town. Coolgardie Cemetery & heritage buildings. Quick 30 min stop.</p></div></div>
-      <div class="activity"><div class="time-col">16:00</div><div class="desc"><h4>Tiba di Perth</h4><p>Check-in penginapan Perth. Rehat.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#127961;</div>
+      <div class="act-info">
+        <h4>Questa Casa (Hay Street, Kalgoorlie)</h4>
+        <div class="act-meta">12:00-12:45 | 181 Hay St, Boulder | Optional</div>
+        <div class="act-desc">Heritage museum unik — cerita sejarah "colourful" Kalgoorlie Hay Street yang terkenal. Interesting social history. Mungkin skip kalau bawa mak bapak.</div>
+        <div class="act-tags"><span class="act-tag paid">AUD $10</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Lunch + Lepak Mak Imah</h4>
+        <div class="act-meta">13:00 onwards</div>
+        <div class="act-desc">Last full day di Kalgoorlie. Masak bersama, makan besar, bergambar, quality time. Malam: packing untuk drive balik Perth esok.</div>
+        <div class="act-tags"><span class="act-tag family">Family Time</span></div>
+      </div>
     </div>
   </div>
 
   <!-- Day 10 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 10</span> <span class="day-date">Khamis, 11 Jun</span></div>
-      <span class="day-tag">Pinnacles Day Trip</span>
+  <div class="day-header" style="background: linear-gradient(135deg, #8e44ad, #e74c3c);">
+    <div><span class="day-num">Hari 10</span> <span class="day-date">Khamis, 11 Jun</span></div>
+    <span class="day-tag">Balik Perth (6 jam)</span>
+  </div>
+  <div class="day-body">
+    <div class="act-card">
+      <div class="act-img">&#127969;</div>
+      <div class="act-info">
+        <h4>Sarapan + Goodbye Mak Imah</h4>
+        <div class="act-meta">08:00-09:30 | Kalgoorlie</div>
+        <div class="act-desc">Last meal bersama. Ucap selamat tinggal. Check-out Somerville Airbnb (before 10 AM).</div>
+        <div class="act-tags"><span class="act-tag family">Family Time</span></div>
+      </div>
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">08:00</div><div class="desc"><h4>Drive ke Pinnacles Desert (~2 jam)</h4><p>Nambung National Park. Batu kapur formation unik.</p></div></div>
-      <div class="activity"><div class="time-col">10:30</div><div class="desc"><h4>Pinnacles Desert Walk</h4><p>Entry: AUD $15/kereta. Walk trail ~1 jam atau drive loop.</p></div></div>
-      <div class="activity"><div class="time-col">12:30</div><div class="desc"><h4>Lancelin Sand Dunes</h4><p>Sandboarding! Sewa board AUD ~$15. Fun untuk semua umur.</p></div></div>
-      <div class="activity"><div class="time-col">14:00</div><div class="desc"><h4>Lobster Shack, Cervantes (optional)</h4><p>Famous rock lobster. Check halal status.</p></div></div>
-      <div class="activity"><div class="time-col">17:00</div><div class="desc"><h4>Balik Perth</h4><p>~2 jam drive balik.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#128663;</div>
+      <div class="act-info">
+        <h4>Drive Balik Perth</h4>
+        <div class="act-meta">10:00-16:30 | 595 km, ~6 jam | Same route balik</div>
+        <div class="act-desc">Stop di Merredin untuk lunch (~13:00). Tiba Perth area ~16:30. Check-in penginapan baru (Perth area — belum book).</div>
+        <div class="act-tags"><span class="act-tag paid">Petrol ~AUD $80-100/van</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128164;</div>
+      <div class="act-info">
+        <h4>Rehat + Settle In Perth</h4>
+        <div class="act-meta">17:00 onwards</div>
+        <div class="act-desc">Check-in penginapan Perth. Rehat, beli groceries di Woolworths/Coles terdekat, masak dinner. Early night — esok explore!</div>
+      </div>
     </div>
   </div>
 
-  <!-- Day 11 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 11</span> <span class="day-date">Jumaat, 12 Jun</span></div>
-      <span class="day-tag">Rottnest Island</span>
+  <!-- ============ PHASE 4: PERTH AREA ============ -->
+  <div class="phase-banner perth-phase">
+    <div>
+      <h3>Fasa 3: Perth Area — Explore & Shopping</h3>
+      <div class="phase-sub">11-15 Jun | 4 Malam | Penginapan TBD (Perth area)</div>
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">07:30</div><div class="desc"><h4>Ferry ke Rottnest Island</h4><p>Dari Fremantle/Perth. Book awal! ~AUD $70-90 return/adult.</p></div></div>
-      <div class="activity"><div class="time-col">09:00</div><div class="desc"><h4>Tiba Rottnest Island</h4><p>Sewa basikal (~AUD $30/day) atau bus tour.</p></div></div>
-      <div class="activity"><div class="time-col">10:00</div><div class="desc"><h4>Jumpa Quokka!</h4><p>Selfie dengan quokka - binatang paling happy di dunia. WAJIB!</p></div></div>
-      <div class="activity"><div class="time-col">12:00</div><div class="desc"><h4>Explore pantai-pantai</h4><p>The Basin, Little Salmon Bay. Air jernih walaupun musim sejuk.</p></div></div>
-      <div class="activity"><div class="time-col">15:30</div><div class="desc"><h4>Ferry balik</h4><p>Last ferry ~4:30 PM (winter). Check schedule.</p></div></div>
-      <div class="info-box">
-        <strong>Nota untuk mak bapak:</strong> Rottnest boleh naik bus tour instead of basikal. Lebih selesa untuk orang tua.
+    <span class="day-tag" style="background: #e74c3c;">PERLU BOOK</span>
+  </div>
+
+  <!-- Day 11 -->
+  <div class="day-header">
+    <div><span class="day-num">Hari 11</span> <span class="day-date">Jumaat, 12 Jun</span></div>
+    <span class="day-tag">Pinnacles + Lancelin</span>
+  </div>
+  <div class="day-body">
+    <div class="info-box">
+      <strong>Epic day trip ke utara!</strong> Pinnacles Desert + Lancelin Sand Dunes. ~2 jam drive dari Perth.
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127964;</div>
+      <div class="act-info">
+        <h4>Pinnacles Desert (Nambung National Park)</h4>
+        <div class="act-meta">08:00-11:00 | ~2 jam drive utara Perth | Pinnacles Drive, Cervantes</div>
+        <div class="act-desc">Ribuan tiang batu kapur menjulang dari pasir kuning — landscape macam planet Mars! Boleh drive loop 4 km atau jalan kaki trail 1.2 km. Sunrise/morning paling cantik. Salah satu natural wonder WA yang paling iconic.</div>
+        <div class="act-tags"><span class="act-tag paid">AUD $15/kereta entry</span><span class="act-tag nature">Nature</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127958;</div>
+      <div class="act-info">
+        <h4>Lancelin Sand Dunes</h4>
+        <div class="act-meta">12:00-14:00 | Lancelin (~50 min south of Pinnacles)</div>
+        <div class="act-desc">SANDBOARDING! Bukit pasir putih besar — sewa papan (AUD $15) dan slide turun macam snowboard. Fun gila untuk semua umur! Mak bapak boleh duduk atas tengok je. View Indian Ocean dari puncak bukit pasir = stunning.</div>
+        <div class="act-tags"><span class="act-tag paid">~AUD $15 board rental</span><span class="act-tag family">Family Fun</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Lunch — Lancelin / Cervantes</h4>
+        <div class="act-meta">14:00-15:00</div>
+        <div class="act-desc">Fish & chips di Lancelin atau Lobster Shack Cervantes (check halal status — ikan biasanya ok). Atau bawa packed lunch dari Perth.</div>
+        <div class="act-tags"><span class="act-tag food">Seafood</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128663;</div>
+      <div class="act-info">
+        <h4>Drive Balik Perth</h4>
+        <div class="act-meta">15:00-17:00 | ~1.5 jam drive</div>
+        <div class="act-desc">Balik Perth area. Dinner masak di rumah atau makan luar.</div>
       </div>
     </div>
   </div>
 
   <!-- Day 12 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 12</span> <span class="day-date">Sabtu, 13 Jun</span></div>
-      <span class="day-tag">Swan Valley + Shopping</span>
+  <div class="day-header">
+    <div><span class="day-num">Hari 12</span> <span class="day-date">Sabtu, 13 Jun</span></div>
+    <span class="day-tag">Rottnest Island — Quokka!</span>
+  </div>
+  <div class="day-body">
+    <div class="info-box warning">
+      <strong>Book ferry AWAL!</strong> Rottnest ferry cepat penuh especially weekends. Book online sekarang.
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">09:30</div><div class="desc"><h4>Swan Valley Drive</h4><p>Chocolate, honey, nougat tasting. ~30 min dari Perth.</p></div></div>
-      <div class="activity"><div class="time-col">12:00</div><div class="desc"><h4>Mandoon Estate / Sandalford</h4><p>Lunch dengan view kebun anggur. Ada halal-friendly options.</p></div></div>
-      <div class="activity"><div class="time-col">14:30</div><div class="desc"><h4>Midland Gate / Shopping</h4><p>Last round shopping sebelum balik.</p></div></div>
-      <div class="activity"><div class="time-col">17:00</div><div class="desc"><h4>Scarborough Beach Sunset</h4><p>Sunset view di pantai popular Perth.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#9973;</div>
+      <div class="act-info">
+        <h4>Ferry ke Rottnest Island</h4>
+        <div class="act-meta">07:30-09:00 | Dari Fremantle B-Shed Terminal | Rottnest Express / SeaLink</div>
+        <div class="act-desc">30 min ferry ride dari Fremantle. Beli return ticket. Book Island Explorer Bus Pass untuk mak bapak (AUD $25) — hop on/off seluruh pulau tanpa kayuh basikal.</div>
+        <div class="act-tags"><span class="act-tag paid">~AUD $70-90 return/adult</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#129445;</div>
+      <div class="act-info">
+        <h4>Selfie dengan Quokka!</h4>
+        <div class="act-meta">09:30-10:30 | Settlement area, Rottnest</div>
+        <div class="act-desc">WAJIB! Quokka = "the happiest animal on earth". Kecil, friendly, senyum selalu. Diorang datang dekat — just duduk rendah dan snap! Jangan bagi makan (kena fine AUD $300). Instagram moment terbaik trip ni!</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag photo">Photo Spot</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127754;</div>
+      <div class="act-info">
+        <h4>The Basin + Little Salmon Bay</h4>
+        <div class="act-meta">10:30-12:00 | Northwest Rottnest</div>
+        <div class="act-desc">Pantai paling cantik Rottnest — air turquoise crystal clear macam Maldives! Walaupun winter, view tetap stunning. Snorkeling spot kalau berani (air sejuk!). Photo opportunity terbaik.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag nature">Nature</span><span class="act-tag photo">Photo Spot</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Lunch — Rottnest Bakery / General Store</h4>
+        <div class="act-meta">12:00-13:00 | Settlement area</div>
+        <div class="act-desc">Rottnest Bakery famous untuk pies & pastries. General store ada sandwiches, drinks. Atau bawak bekal — picnic tepi pantai!</div>
+        <div class="act-tags"><span class="act-tag food">Lunch</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128099;</div>
+      <div class="act-info">
+        <h4>Explore by Bus / Bike</h4>
+        <div class="act-meta">13:00-15:00 | Around the island</div>
+        <div class="act-desc">Sewa basikal (AUD $30/day) atau bus tour. Wadjemup Lighthouse, Cathedral Rocks, Bathurst Lighthouse. Pulau kecil ~11 km panjang — boleh explore dalam sehari.</div>
+        <div class="act-tags"><span class="act-tag paid">AUD $30 bike / $25 bus</span><span class="act-tag nature">Nature</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#9973;</div>
+      <div class="act-info">
+        <h4>Ferry Balik</h4>
+        <div class="act-meta">15:30-16:00 | Last ferry ~4:30 PM (winter schedule)</div>
+        <div class="act-desc">Jangan miss last ferry! Check jadual masa beli tiket. ~30 min ride balik Fremantle.</div>
+      </div>
+    </div>
+    <div class="info-box">
+      <strong>Tips untuk mak bapak:</strong> Island Explorer Bus pass (AUD $25) — naik bus keliling pulau, turun mana suka. Tak perlu kayuh basikal. Very comfortable.
     </div>
   </div>
 
   <!-- Day 13 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 13</span> <span class="day-date">Ahad, 14 Jun</span></div>
-      <span class="day-tag">Mandurah / Relax</span>
+  <div class="day-header">
+    <div><span class="day-num">Hari 13</span> <span class="day-date">Ahad, 14 Jun</span></div>
+    <span class="day-tag">Swan Valley + Shopping</span>
+  </div>
+  <div class="day-body">
+    <div class="act-card">
+      <div class="act-img">&#127851;</div>
+      <div class="act-info">
+        <h4>Margaret River Chocolate Company</h4>
+        <div class="act-meta">09:30-10:30 | 5123 West Swan Rd, West Swan | Free tasting!</div>
+        <div class="act-desc">FREE chocolate tasting! Rows of chocolate samples — dark, milk, white, fruit, nut. Beli coklat untuk bawa balik Malaysia (best souvenir!). Kids love it, adults pun tak boleh stop.</div>
+        <div class="act-tags"><span class="act-tag free">Free Tasting</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">09:00</div><div class="desc"><h4>Drive ke Mandurah (~1 jam)</h4><p>Bandar pesisir selatan Perth.</p></div></div>
-      <div class="activity"><div class="time-col">10:30</div><div class="desc"><h4>Dolphin Cruise</h4><p>~AUD $30/adult. 1 jam cruise jumpa dolphin di Mandurah Estuary.</p></div></div>
-      <div class="activity"><div class="time-col">12:30</div><div class="desc"><h4>Lunch di Mandurah</h4><p>Seafood / halal options.</p></div></div>
-      <div class="activity"><div class="time-col">14:30</div><div class="desc"><h4>Balik Perth, packing awal</h4><p>Start packing, susun barang.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#127855;</div>
+      <div class="act-info">
+        <h4>The House of Honey</h4>
+        <div class="act-meta">10:45-11:30 | 867 Great Northern Hwy, Herne Hill</div>
+        <div class="act-desc">Free honey tasting — 30+ jenis madu! Marri, Jarrah, Karri honey (unik WA). Bee observation hive. Beli madu untuk bawa balik.</div>
+        <div class="act-tags"><span class="act-tag free">Free Tasting</span><span class="act-tag nature">Nature</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127863;</div>
+      <div class="act-info">
+        <h4>Morish Nuts + Swan Valley Cafe</h4>
+        <div class="act-meta">11:30-12:30 | Swan Valley strip</div>
+        <div class="act-desc">Free nut tasting — wasabi macadamia, honey cashew, dll. Lunch di salah satu cafe Swan Valley — Mandoon Estate ada halal-friendly grill options (steak, fish).</div>
+        <div class="act-tags"><span class="act-tag free">Free Tasting</span><span class="act-tag food">Lunch</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128717;</div>
+      <div class="act-info">
+        <h4>Midland Gate Shopping Centre</h4>
+        <div class="act-meta">13:30-15:30 | Great Eastern Hwy, Midland</div>
+        <div class="act-desc">Besar, 200+ kedai. Kmart (murah!), Target, Big W, JB Hi-Fi. Beli souvenirs, baju, electronics. Harga Kmart Australia legendarily murah untuk household items.</div>
+        <div class="act-tags"><span class="act-tag paid">Shopping</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127749;</div>
+      <div class="act-info">
+        <h4>Scarborough Beach Sunset</h4>
+        <div class="act-meta">16:30-17:30 | The Esplanade, Scarborough</div>
+        <div class="act-desc">Pantai popular Perth — surfers, cafes, playground. Sunset ~5:20 PM. Walk along the promenade. Nice way to end the day. Dinner di salah satu restaurant tepi pantai.</div>
+        <div class="act-tags"><span class="act-tag free">Free</span><span class="act-tag photo">Photo Spot</span><span class="act-tag nature">Nature</span></div>
+      </div>
     </div>
   </div>
 
   <!-- Day 14 -->
-  <div>
-    <div class="day-header">
-      <div><span class="day-num">Hari 14</span> <span class="day-date">Isnin, 15 Jun</span></div>
-      <span class="day-tag">Last Day + Packing</span>
+  <div class="day-header">
+    <div><span class="day-num">Hari 14</span> <span class="day-date">Isnin, 15 Jun</span></div>
+    <span class="day-tag">Last Day — Shopping + Packing</span>
+  </div>
+  <div class="day-body">
+    <div class="info-box danger">
+      <strong>Flight malam ini!</strong> MH126 departs 02:10 AM (16 Jun). Kena checkout, return kereta, dan sampai airport sebelum midnight.
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">09:00</div><div class="desc"><h4>Last minute shopping</h4><p>Beli snacks, coklat, souvenirs untuk family kat Malaysia.</p></div></div>
-      <div class="activity"><div class="time-col">12:00</div><div class="desc"><h4>Lunch</h4><p>Last meal di Perth.</p></div></div>
-      <div class="activity"><div class="time-col">14:00</div><div class="desc"><h4>Checkout & Packing</h4><p>Final packing. Timbang bag (50kg limit each).</p></div></div>
-      <div class="activity"><div class="time-col">18:00</div><div class="desc"><h4>Dinner awal</h4><p>Makan sebelum ke airport.</p></div></div>
-      <div class="activity"><div class="time-col">22:00</div><div class="desc"><h4>Pulangkan rental car</h4><p>Return kereta di Perth Airport. Some agencies tutup malam - check beforehand.</p></div></div>
-      <div class="activity"><div class="time-col">23:30</div><div class="desc"><h4>Check-in Airport</h4><p>Perth Airport T1 International. Flight 02:10 AM.</p></div></div>
+    <div class="act-card">
+      <div class="act-img">&#128717;</div>
+      <div class="act-info">
+        <h4>Last Minute Shopping</h4>
+        <div class="act-meta">09:00-12:00 | Perth area</div>
+        <div class="act-desc">Cadangan tempat: <strong>DFO Perth</strong> (Direct Factory Outlet — brands murah), <strong>Watertown</strong> (Brand Depot, outlet store), atau <strong>Costco Perth</strong> (bulk chocolates, snacks, vitamins — membership needed). Beli Tim Tam, Vegemite, Shapes crackers, Ugg boots sebagai souvenir.</div>
+        <div class="act-tags"><span class="act-tag paid">Shopping</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Last Lunch di Perth</h4>
+        <div class="act-meta">12:30-13:30</div>
+        <div class="act-desc">Cadangan: <strong>Hajis Kitchen</strong> (Welshpool — nasi kandar, roti canai! Malaysian comfort food). Atau <strong>Kampung Style</strong> (Cannington — Malay food legit).</div>
+        <div class="act-tags"><span class="act-tag food">Halal</span><span class="act-tag family">Family Friendly</span></div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128188;</div>
+      <div class="act-info">
+        <h4>Checkout + Final Packing</h4>
+        <div class="act-meta">14:00-17:00</div>
+        <div class="act-desc">Pack semua! Timbang beg (50 kg limit each, 4 bags). Susun souvenir, coklat, barang shopping. Pastikan passport semua orang ada. Charge semua devices.</div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#127860;</div>
+      <div class="act-info">
+        <h4>Dinner Awal</h4>
+        <div class="act-meta">17:30-18:30</div>
+        <div class="act-desc">Last dinner Australia! Makan kenyang sebelum ke airport. Masak di rumah atau makan luar.</div>
+      </div>
+    </div>
+    <div class="act-card">
+      <div class="act-img">&#128663;</div>
+      <div class="act-info">
+        <h4>Return Rental Cars + Airport</h4>
+        <div class="act-meta">22:00-23:30 | Perth Airport T1</div>
+        <div class="act-desc">Pulangkan 2 van di Perth Airport rental counter (check closing time — sesetengah tutup 10 PM, kena arrange after-hours drop). Check-in MH126. Business Class lounge sambil tunggu flight.</div>
+      </div>
     </div>
   </div>
 
   <!-- Day 15 -->
-  <div>
-    <div class="day-header" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
-      <div><span class="day-num">Hari 15</span> <span class="day-date">Selasa, 16 Jun</span></div>
-      <span class="day-tag">Balik Malaysia</span>
+  <div class="day-header" style="background: linear-gradient(135deg, #27ae60, #2ecc71);">
+    <div><span class="day-num">Hari 15</span> <span class="day-date">Selasa, 16 Jun</span></div>
+    <span class="day-tag">Balik Malaysia</span>
+  </div>
+  <div class="day-body">
+    <div class="act-card">
+      <div class="act-img">&#9992;</div>
+      <div class="act-info">
+        <h4>MH126 — Perth ke Kuala Lumpur</h4>
+        <div class="act-meta">02:10 departure | ~5 jam 50 min | Tiba KLIA 08:00</div>
+        <div class="act-desc">Red-eye flight. Tidur dalam flight — Business Class flat bed. Tiba KLIA pagi, segar insyaAllah. Selamat sampai! Alhamdulillah.</div>
+      </div>
     </div>
-    <div class="day-body">
-      <div class="activity"><div class="time-col">02:10</div><div class="desc"><h4>Berlepas MH126</h4><p>Red-eye flight. Cuba tidur dalam flight.</p></div></div>
-      <div class="activity"><div class="time-col">08:00</div><div class="desc"><h4>Tiba KLIA</h4><p>Selamat sampai! Alhamdulillah.</p></div></div>
+  </div>
+
+  <!-- Halal Food Guide -->
+  <div class="card" style="margin-top: 24px;">
+    <h3>Panduan Makanan Halal Perth</h3>
+    <table>
+      <tr><th>Restoran</th><th>Lokasi</th><th>Jenis</th><th>Nota</th></tr>
+      <tr><td><strong>Al-Ameen</strong></td><td>Northbridge</td><td>Middle Eastern, Nasi Arab</td><td>Halal certified, popular</td></tr>
+      <tr><td><strong>Makan Makan</strong></td><td>Northbridge</td><td>Malaysian — nasi lemak!</td><td>Rasa macam Malaysia</td></tr>
+      <tr><td><strong>Hajis Kitchen</strong></td><td>Welshpool</td><td>Malaysian, Roti Canai</td><td>Legit Malaysian food</td></tr>
+      <tr><td><strong>Kampung Style</strong></td><td>Cannington</td><td>Malay</td><td>Comfort food</td></tr>
+      <tr><td><strong>Curry Muncher</strong></td><td>Mandurah</td><td>Indian</td><td>Dekat Halls Head</td></tr>
+      <tr><td><strong>Zambreros</strong></td><td>Multiple locations</td><td>Mexican (halal options)</td><td>Check branch</td></tr>
+      <tr><td><strong>Nando's</strong></td><td>Multiple locations</td><td>Chicken</td><td>Halal certified in WA</td></tr>
+      <tr><td><strong>Woolworths / Coles</strong></td><td>Everywhere</td><td>Groceries</td><td>Banyak daging halal section</td></tr>
+    </table>
+    <div class="info-box" style="margin-top: 12px;">
+      <strong>Tip:</strong> Download app <strong>"Halal Trip"</strong> atau <strong>"Halalspot"</strong> untuk cari restaurant halal nearby. Woolworths/Coles semua ada halal meat section — masak sendiri paling jimat dan confirm halal!
     </div>
   </div>
 </div>
@@ -1116,7 +1708,7 @@
 
   <div class="option-grid">
     <div class="option-card" style="border-color: var(--success);">
-      <span class="tag" style="background: var(--success);">Van 1 - Pending</span>
+      <span class="tag" style="background: var(--success);">Van 1 - Confirmed</span>
       <h4>Ford Tourneo Titanium X</h4>
       <div class="price">MYR 13,641.58</div>
       <ul>
@@ -1128,7 +1720,7 @@
         <li><strong>Return:</strong> 16 Jun 2026, 10:00 AM</li>
         <li><strong>Location:</strong> Perth International & Domestic Airport (PER)</li>
       </ul>
-      <p style="margin-top:8px;"><span class="status-badge status-pending">PENDING</span></p>
+      <p style="margin-top:8px;"><span class="status-badge status-confirmed">CONFIRMED</span></p>
     </div>
     <div class="option-card" style="border-color: var(--success);">
       <span class="tag" style="background: var(--success);">Van 2 - Confirmed (Sixt)</span>
@@ -1152,8 +1744,8 @@
     <h3>Ringkasan Kos Kereta</h3>
     <table>
       <tr><th>Item</th><th class="text-right">Kos (MYR)</th></tr>
-      <tr><td>Van 1 - Ford Tourneo Titanium X (14 hari)</td><td class="text-right">RM 13,641.58</td></tr>
-      <tr><td>Van 2 - Ford Tourneo Titanium X / Sixt (14 hari)</td><td class="text-right">RM 13,641.58</td></tr>
+      <tr><td>Van 1 - Ford Tourneo Titanium X (14 hari) <span class="status-badge status-confirmed">CONFIRMED</span></td><td class="text-right">RM 13,641.58</td></tr>
+      <tr><td>Van 2 - Ford Tourneo Titanium X / Sixt (14 hari) <span class="status-badge status-confirmed">CONFIRMED</span></td><td class="text-right">RM 13,641.58</td></tr>
       <tr class="total-row"><td><strong>JUMLAH SEWA KERETA</strong></td><td class="text-right"><strong>RM 27,283.16</strong></td></tr>
       <tr><td>Per orang (10 pax)</td><td class="text-right">RM 2,728.32</td></tr>
     </table>
@@ -1289,7 +1881,7 @@
       <tr><td>Airbnb Halls Head (2-8 Jun, 6 malam)</td><td colspan="2" style="text-align:center;"><span class="status-badge status-confirmed">CONFIRMED</span> (harga dalam booking)</td><td>2 Baruna Court, hosted by Beth</td></tr>
       <tr><td>Airbnb Somerville (8-11 Jun, 3 malam)</td><td colspan="2" style="text-align:center;"><span class="status-badge status-confirmed">CONFIRMED</span> (harga dalam booking)</td><td>Kalgoorlie area</td></tr>
       <tr><td>Penginapan Perth (11-15 Jun, 4 malam)</td><td class="text-right">$1,400 - $2,000</td><td class="text-right">RM4,480 - 6,400</td><td><span class="status-badge status-urgent">BELUM BOOK</span></td></tr>
-      <tr><td>Sewa Kereta (2x Ford Tourneo, 14 hari)</td><td colspan="2" style="text-align:center;"><strong>RM 27,283.16</strong> <span class="status-badge status-confirmed">CONFIRMED</span></td><td>Sixt + 1 lagi (Pending)</td></tr>
+      <tr><td>Sewa Kereta (2x Ford Tourneo, 14 hari)</td><td colspan="2" style="text-align:center;"><strong>RM 27,283.16</strong> <span class="status-badge status-confirmed">CONFIRMED</span></td><td>Kedua-dua van confirmed</td></tr>
       <tr><td>Petrol</td><td class="text-right">$400 - $600</td><td class="text-right">RM1,280 - 1,920</td><td>Termasuk Kalgoorlie return</td></tr>
       <tr><td>Makan (14 hari x 10 pax)</td><td class="text-right">$3,500 - $5,000</td><td class="text-right">RM11,200 - 16,000</td><td>~$25-35/pax/hari (masak + makan luar)</td></tr>
       <tr><td>Aktiviti & Tiket</td><td class="text-right">$1,000 - $1,500</td><td class="text-right">RM3,200 - 4,800</td><td>Rottnest, wildlife park, etc</td></tr>
