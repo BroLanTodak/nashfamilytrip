@@ -335,11 +335,170 @@
     .people-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
+  /* Calendar */
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+  }
+  .cal-header {
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.8em;
+    padding: 8px 4px;
+    color: var(--primary);
+    text-transform: uppercase;
+  }
+  .cal-day {
+    min-height: 100px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 8px;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .cal-day:hover { border-color: var(--primary-light); box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  .cal-day.empty { background: transparent; border: none; min-height: auto; }
+  .cal-day .cal-num {
+    font-weight: 700;
+    font-size: 1.1em;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .cal-day .cal-label {
+    font-size: 0.75em;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: block;
+    margin-bottom: 3px;
+    line-height: 1.3;
+  }
+  .cal-day.trip { border-left: 3px solid var(--primary-light); }
+  .cal-day.wedding { border-left: 3px solid var(--accent); background: #fef9e7; }
+  .cal-day.kalgoorlie { border-left: 3px solid #8e44ad; background: #f5eef8; }
+  .cal-day.travel { border-left: 3px solid #e74c3c; background: #fdedec; }
+  .cal-day.today { box-shadow: 0 0 0 2px var(--accent); }
+
+  .cal-area { font-size: 0.7em; color: white; padding: 1px 5px; border-radius: 3px; display: inline-block; margin-top: 2px; }
+  .area-perth { background: var(--primary-light); }
+  .area-kalgoorlie { background: #8e44ad; }
+  .area-travel { background: #e74c3c; }
+  .area-wedding { background: var(--accent); }
+
+  /* Zone Timeline */
+  .zone-timeline {
+    position: relative;
+    margin: 20px 0;
+  }
+  .zone-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .zone-label {
+    width: 130px;
+    flex-shrink: 0;
+    font-weight: 600;
+    font-size: 0.9em;
+    padding-right: 12px;
+    text-align: right;
+  }
+  .zone-bar-container {
+    flex: 1;
+    display: flex;
+    gap: 1px;
+    position: relative;
+  }
+  .zone-cell {
+    flex: 1;
+    height: 40px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7em;
+    font-weight: 600;
+    color: white;
+    transition: all 0.2s;
+    cursor: default;
+    position: relative;
+  }
+  .zone-cell:hover { opacity: 0.85; transform: scaleY(1.1); }
+  .zone-cell.active-perth { background: var(--primary-light); }
+  .zone-cell.active-kalgoorlie { background: #8e44ad; }
+  .zone-cell.active-travel { background: #e74c3c; }
+  .zone-cell.active-wedding { background: var(--accent); }
+  .zone-cell.inactive { background: #f0f2f5; }
+  .zone-date-row {
+    display: flex;
+    gap: 1px;
+    margin-top: 2px;
+  }
+  .zone-date-row .zone-cell {
+    background: none;
+    color: var(--text-light);
+    height: 20px;
+    font-size: 0.7em;
+    font-weight: 400;
+  }
+
+  /* Drag reorder */
+  .cal-day[draggable="true"] { cursor: grab; }
+  .cal-day.dragging { opacity: 0.4; }
+  .cal-day.drag-over { border: 2px dashed var(--accent); }
+
+  /* Quick view popup */
+  .quick-view {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    z-index: 200;
+    max-width: 450px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+  .quick-view.active { display: block; }
+  .quick-view-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 199;
+  }
+  .quick-view-overlay.active { display: block; }
+  .quick-view h3 { margin-bottom: 12px; color: var(--primary); }
+  .quick-view .close-btn {
+    position: absolute;
+    top: 12px; right: 16px;
+    background: none; border: none;
+    font-size: 1.5em; cursor: pointer;
+    color: var(--text-light);
+  }
+
   /* Print */
   @media print {
     .tab-nav { display: none; }
     .tab-content { display: block !important; page-break-inside: avoid; }
     .hero { padding: 20px; }
+  }
+
+  @media (max-width: 600px) {
+    .cal-grid { grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-day { min-height: 70px; padding: 4px; font-size: 0.7em; }
+    .cal-day .cal-num { font-size: 0.95em; }
+    .cal-day .cal-label { font-size: 0.65em; padding: 1px 3px; }
+    .zone-label { width: 80px; font-size: 0.75em; }
+    .zone-cell { height: 30px; font-size: 0.6em; }
   }
 </style>
 </head>
@@ -361,6 +520,7 @@
 <!-- Tabs -->
 <div class="tab-nav" id="tabNav">
   <button class="active" data-tab="overview">Overview</button>
+  <button data-tab="kalendar">Kalendar</button>
   <button data-tab="flights">Penerbangan</button>
   <button data-tab="itinerary">Itinerary</button>
   <button data-tab="accommodation">Penginapan</button>
@@ -448,6 +608,103 @@
       <tr><td>Pakaian</td><td>Layer: t-shirt + hoodie/sweater + jacket</td></tr>
     </table>
   </div>
+</div>
+
+<!-- ========== KALENDAR ========== -->
+<div class="tab-content" id="tab-kalendar">
+
+  <!-- Zone Timeline -->
+  <div class="card">
+    <h3>Zon Perjalanan</h3>
+    <p style="margin-bottom: 16px; font-size: 0.9em; color: var(--text-light);">Overview di mana kita berada setiap hari. Klik mana-mana hari untuk lihat detail.</p>
+
+    <div class="zone-timeline">
+      <!-- Date headers -->
+      <div class="zone-row">
+        <div class="zone-label" style="color: var(--text-light); font-size: 0.75em;">Tarikh</div>
+        <div class="zone-bar-container zone-date-row" id="zone-dates"></div>
+      </div>
+      <!-- Perth row -->
+      <div class="zone-row">
+        <div class="zone-label" style="color: var(--primary-light);">Perth City</div>
+        <div class="zone-bar-container" id="zone-perth"></div>
+      </div>
+      <!-- Wedding row -->
+      <div class="zone-row">
+        <div class="zone-label" style="color: var(--accent);">Dayton (Kahwin)</div>
+        <div class="zone-bar-container" id="zone-wedding"></div>
+      </div>
+      <!-- Kalgoorlie row -->
+      <div class="zone-row">
+        <div class="zone-label" style="color: #8e44ad;">Kalgoorlie</div>
+        <div class="zone-bar-container" id="zone-kalgoorlie"></div>
+      </div>
+      <!-- Day trip row -->
+      <div class="zone-row">
+        <div class="zone-label" style="color: var(--success);">Day Trip</div>
+        <div class="zone-bar-container" id="zone-daytrip"></div>
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; font-size: 0.8em;">
+      <span><span class="cal-area area-perth">&#9632;</span> Perth City</span>
+      <span><span class="cal-area area-wedding">&#9632;</span> Majlis Kahwin</span>
+      <span><span class="cal-area area-kalgoorlie">&#9632;</span> Kalgoorlie</span>
+      <span><span class="cal-area area-travel">&#9632;</span> Perjalanan / Travel</span>
+      <span style="color: var(--success);">&#9632; Day Trip</span>
+    </div>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="option-grid" style="margin-bottom: 20px;">
+    <div class="option-card" style="border-left: 4px solid var(--primary-light); text-align: center;">
+      <h4 style="font-size: 0.85em;">Perth City</h4>
+      <div style="font-size: 2em; font-weight: 700; color: var(--primary-light);">8</div>
+      <div style="font-size: 0.8em; color: var(--text-light);">malam</div>
+      <div style="font-size: 0.75em; margin-top: 4px;">2-5 Jun, 7 Jun, 10-12 Jun, 13-15 Jun</div>
+    </div>
+    <div class="option-card" style="border-left: 4px solid var(--accent); text-align: center;">
+      <h4 style="font-size: 0.85em;">Majlis Kahwin</h4>
+      <div style="font-size: 2em; font-weight: 700; color: var(--accent);">1</div>
+      <div style="font-size: 0.8em; color: var(--text-light);">hari</div>
+      <div style="font-size: 0.75em; margin-top: 4px;">6 Jun (Sabtu)</div>
+    </div>
+    <div class="option-card" style="border-left: 4px solid #8e44ad; text-align: center;">
+      <h4 style="font-size: 0.85em;">Kalgoorlie</h4>
+      <div style="font-size: 2em; font-weight: 700; color: #8e44ad;">2</div>
+      <div style="font-size: 0.8em; color: var(--text-light);">malam</div>
+      <div style="font-size: 0.75em; margin-top: 4px;">8-9 Jun (Isnin-Selasa)</div>
+    </div>
+    <div class="option-card" style="border-left: 4px solid var(--success); text-align: center;">
+      <h4 style="font-size: 0.85em;">Day Trips</h4>
+      <div style="font-size: 2em; font-weight: 700; color: var(--success);">4</div>
+      <div style="font-size: 0.8em; color: var(--text-light);">hari</div>
+      <div style="font-size: 0.75em; margin-top: 4px;">Fremantle, Pinnacles, Rottnest, Mandurah</div>
+    </div>
+  </div>
+
+  <!-- Calendar Grid -->
+  <div class="card">
+    <h3>Kalendar Jun 2026</h3>
+    <p style="margin-bottom: 12px; font-size: 0.85em; color: var(--text-light);">Klik pada hari untuk lihat aktiviti. Warna menunjukkan zon lokasi.</p>
+    <div class="cal-grid" id="calGrid"></div>
+  </div>
+
+  <!-- Quick summary list -->
+  <div class="card">
+    <h3>Ringkasan Harian</h3>
+    <table id="dailySummaryTable">
+      <tr><th style="width:50px;">Hari</th><th style="width:100px;">Tarikh</th><th>Lokasi</th><th>Aktiviti Utama</th></tr>
+    </table>
+  </div>
+</div>
+
+<!-- Quick View Popup -->
+<div class="quick-view-overlay" id="qvOverlay"></div>
+<div class="quick-view" id="qvPopup">
+  <button class="close-btn" id="qvClose">&times;</button>
+  <div id="qvContent"></div>
 </div>
 
 <!-- ========== FLIGHTS ========== -->
@@ -1164,6 +1421,246 @@
 </div>
 
 <script>
+// ===== TRIP DATA =====
+const tripDays = [
+  { day: 1, date: '2 Jun', dow: 'Sel', zone: 'travel', label: 'Tiba Perth', color: 'active-travel',
+    activities: ['08:55 - Berlepas KLIA T1 (MH125)', '14:50 - Tiba Perth Airport', '16:30 - Check-in penginapan', '18:30 - Dinner (halal restaurant)'],
+    highlight: 'Arrival Day' },
+  { day: 2, date: '3 Jun', dow: 'Rab', zone: 'perth', label: 'Perth City', color: 'active-perth',
+    activities: ['09:00 - Kings Park & Botanic Garden', '11:30 - Elizabeth Quay', '13:00 - Lunch Northbridge', '14:30 - Perth Cultural Centre', '16:30 - Murray St / Hay St Mall'],
+    highlight: 'City Explore' },
+  { day: 3, date: '4 Jun', dow: 'Kha', zone: 'daytrip', label: 'Fremantle', color: 'active-perth',
+    activities: ['09:30 - Drive ke Fremantle (~30 min)', '10:00 - Fremantle Markets', '12:00 - Fishing Boat Harbour (lunch)', '14:00 - Fremantle Prison (optional)', '15:30 - Cottesloe Beach'],
+    highlight: 'Day Trip' },
+  { day: 4, date: '5 Jun', dow: 'Jum', zone: 'perth', label: 'Wildlife + Prep', color: 'active-perth',
+    activities: ['09:00 - Caversham Wildlife Park', '12:00 - Swan Valley', '15:00 - Shopping / Prep Majlis', '18:00 - Dinner family'],
+    highlight: 'Prep Wedding' },
+  { day: 5, date: '6 Jun', dow: 'Sab', zone: 'wedding', label: 'MAJLIS KAHWIN', color: 'active-wedding',
+    activities: ['Pagi - Bersiap untuk majlis', 'TBD - Majlis Perkahwinan', '5 Sudbury Way, Dayton WA 6055', 'Petang - Lepak dengan family Mak Imah'],
+    highlight: 'WEDDING DAY' },
+  { day: 6, date: '7 Jun', dow: 'Ahd', zone: 'perth', label: 'Rehat + Shopping', color: 'active-perth',
+    activities: ['10:00 - Bangun lambat / Rehat', '12:00 - Harbour Town (Outlet)', '15:00 - DFO Perth / Watertown', '18:00 - Dinner, prep Kalgoorlie'],
+    highlight: 'Shopping Day' },
+  { day: 7, date: '8 Jun', dow: 'Isn', zone: 'kalgoorlie', label: 'Drive Kalgoorlie', color: 'active-travel',
+    activities: ['07:00 - Bertolak ke Kalgoorlie (~6 jam)', '10:00 - Stop: Merredin (~260 km)', '13:30 - Tiba Kalgoorlie', '15:00 - Lepak rumah Mak Imah'],
+    highlight: '595 km Drive' },
+  { day: 8, date: '9 Jun', dow: 'Sel', zone: 'kalgoorlie', label: 'Kalgoorlie Explore', color: 'active-kalgoorlie',
+    activities: ['09:00 - Super Pit Lookout', '11:00 - Museum of the Goldfields', '13:00 - Hannan Street', '15:00 - Masa dengan Mak Imah'],
+    highlight: 'Gold Rush Town' },
+  { day: 9, date: '10 Jun', dow: 'Rab', zone: 'kalgoorlie', label: 'Balik Perth', color: 'active-travel',
+    activities: ['08:00 - Sarapan bersama Mak Imah', '09:30 - Bertolak balik Perth', '10:00 - Stop: Coolgardie', '16:00 - Tiba Perth, rehat'],
+    highlight: 'Return Drive' },
+  { day: 10, date: '11 Jun', dow: 'Kha', zone: 'daytrip', label: 'Pinnacles', color: 'active-perth',
+    activities: ['08:00 - Drive ke Pinnacles (~2 jam)', '10:30 - Pinnacles Desert Walk', '12:30 - Lancelin Sand Dunes', '17:00 - Balik Perth'],
+    highlight: 'Day Trip' },
+  { day: 11, date: '12 Jun', dow: 'Jum', zone: 'daytrip', label: 'Rottnest Island', color: 'active-perth',
+    activities: ['07:30 - Ferry ke Rottnest Island', '10:00 - Jumpa Quokka!', '12:00 - Explore pantai-pantai', '15:30 - Ferry balik'],
+    highlight: 'Day Trip - Quokka!' },
+  { day: 12, date: '13 Jun', dow: 'Sab', zone: 'perth', label: 'Swan Valley', color: 'active-perth',
+    activities: ['09:30 - Swan Valley Drive', '12:00 - Mandoon Estate / Sandalford', '14:30 - Midland Gate Shopping', '17:00 - Scarborough Beach Sunset'],
+    highlight: 'Explore + Shop' },
+  { day: 13, date: '14 Jun', dow: 'Ahd', zone: 'daytrip', label: 'Mandurah', color: 'active-perth',
+    activities: ['09:00 - Drive ke Mandurah (~1 jam)', '10:30 - Dolphin Cruise', '12:30 - Lunch', '14:30 - Balik Perth, packing awal'],
+    highlight: 'Day Trip - Dolphins' },
+  { day: 14, date: '15 Jun', dow: 'Isn', zone: 'perth', label: 'Last Day + Pack', color: 'active-perth',
+    activities: ['09:00 - Last minute shopping', '12:00 - Lunch', '14:00 - Checkout & Packing', '22:00 - Pulangkan rental car', '23:30 - Check-in Perth Airport'],
+    highlight: 'Packing Day' },
+  { day: 15, date: '16 Jun', dow: 'Sel', zone: 'travel', label: 'Balik KL', color: 'active-travel',
+    activities: ['02:10 - Berlepas MH126', '08:00 - Tiba KLIA'],
+    highlight: 'Balik Malaysia' },
+];
+
+function buildCalendar() {
+  const grid = document.getElementById('calGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+
+  const days = ['Isn', 'Sel', 'Rab', 'Kha', 'Jum', 'Sab', 'Ahd'];
+  days.forEach(d => {
+    const h = document.createElement('div');
+    h.className = 'cal-header';
+    h.textContent = d;
+    grid.appendChild(h);
+  });
+
+  // Jun 2026 starts on Monday (day 0 in Mon-start grid)
+  // 1 Jun = Monday
+  for (let d = 1; d <= 30; d++) {
+    const cell = document.createElement('div');
+    cell.className = 'cal-day';
+
+    const numEl = document.createElement('div');
+    numEl.className = 'cal-num';
+    numEl.textContent = d;
+    cell.appendChild(numEl);
+
+    // Find trip data
+    const tripDay = tripDays.find(t => {
+      const dateNum = parseInt(t.date.split(' ')[0]);
+      return dateNum === d;
+    });
+
+    if (tripDay) {
+      cell.classList.add(tripDay.zone === 'wedding' ? 'wedding' :
+                         tripDay.zone === 'kalgoorlie' ? 'kalgoorlie' :
+                         tripDay.zone === 'travel' ? 'travel' : 'trip');
+
+      const lbl = document.createElement('div');
+      lbl.className = 'cal-label';
+      const zoneColors = {
+        perth: 'background:#2980b9;color:white;',
+        wedding: 'background:#e67e22;color:white;',
+        kalgoorlie: 'background:#8e44ad;color:white;',
+        travel: 'background:#e74c3c;color:white;',
+        daytrip: 'background:#27ae60;color:white;'
+      };
+      lbl.style.cssText = zoneColors[tripDay.zone] || '';
+      lbl.textContent = tripDay.label;
+      cell.appendChild(lbl);
+
+      const dayLabel = document.createElement('div');
+      dayLabel.style.cssText = 'font-size:0.7em;color:var(--text-light);margin-top:2px;';
+      dayLabel.textContent = 'Hari ' + tripDay.day;
+      cell.appendChild(dayLabel);
+
+      cell.onclick = () => showQuickView(tripDay);
+    } else {
+      cell.style.opacity = '0.4';
+    }
+
+    // Highlight today
+    const today = new Date();
+    if (today.getFullYear() === 2026 && today.getMonth() === 5 && today.getDate() === d) {
+      cell.classList.add('today');
+    }
+
+    grid.appendChild(cell);
+  }
+}
+
+function buildZoneTimeline() {
+  const zones = {
+    dates: document.getElementById('zone-dates'),
+    perth: document.getElementById('zone-perth'),
+    wedding: document.getElementById('zone-wedding'),
+    kalgoorlie: document.getElementById('zone-kalgoorlie'),
+    daytrip: document.getElementById('zone-daytrip'),
+  };
+  if (!zones.dates) return;
+
+  const zoneMap = {
+    perth: ['perth'],
+    wedding: ['wedding'],
+    kalgoorlie: ['kalgoorlie'],
+    daytrip: ['daytrip'],
+  };
+
+  tripDays.forEach(td => {
+    // Date header
+    const dateCell = document.createElement('div');
+    dateCell.className = 'zone-cell';
+    dateCell.style.cssText = 'background:none;color:var(--text);font-weight:600;';
+    dateCell.textContent = td.date.split(' ')[0];
+    dateCell.title = td.date + ' (' + td.dow + ')';
+    zones.dates.appendChild(dateCell);
+
+    // Each zone row
+    Object.keys(zoneMap).forEach(zone => {
+      const cell = document.createElement('div');
+      const isActive = td.zone === zone || (zone === 'kalgoorlie' && td.zone === 'kalgoorlie');
+      // Special: travel days for kalgoorlie show in kalgoorlie row
+      const isKalTravel = zone === 'kalgoorlie' && td.zone === 'travel' && (td.day === 7 || td.day === 9);
+      const isPerthBase = zone === 'perth' && td.zone === 'travel' && (td.day === 1 || td.day === 15);
+
+      if (isActive || isKalTravel || isPerthBase) {
+        cell.className = 'zone-cell active-' + (isKalTravel ? 'travel' : isPerthBase ? 'travel' : zone);
+        cell.textContent = td.label.length > 8 ? td.label.substring(0, 7) + '..' : td.label;
+      } else {
+        cell.className = 'zone-cell inactive';
+      }
+      cell.title = 'Hari ' + td.day + ': ' + td.label;
+      cell.onclick = () => showQuickView(td);
+      zones[zone].appendChild(cell);
+    });
+  });
+}
+
+function buildDailySummary() {
+  const table = document.getElementById('dailySummaryTable');
+  if (!table) return;
+
+  const zoneLabels = {
+    perth: 'Perth City',
+    wedding: 'Dayton (Kahwin)',
+    kalgoorlie: 'Kalgoorlie',
+    travel: 'Perjalanan',
+    daytrip: 'Day Trip',
+  };
+  const zoneDots = {
+    perth: 'area-perth',
+    wedding: 'area-wedding',
+    kalgoorlie: 'area-kalgoorlie',
+    travel: 'area-travel',
+    daytrip: 'area-perth',
+  };
+
+  tripDays.forEach(td => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-weight:700;text-align:center;">${td.day}</td>
+      <td><strong>${td.date}</strong><br><span style="font-size:0.8em;color:var(--text-light);">${td.dow}</span></td>
+      <td><span class="cal-area ${zoneDots[td.zone]}">${zoneLabels[td.zone]}</span></td>
+      <td style="font-size:0.85em;">${td.highlight} — ${td.activities[0]}</td>
+    `;
+    tr.style.cursor = 'pointer';
+    tr.onclick = () => showQuickView(td);
+    table.appendChild(tr);
+  });
+}
+
+function showQuickView(td) {
+  const overlay = document.getElementById('qvOverlay');
+  const popup = document.getElementById('qvPopup');
+  const content = document.getElementById('qvContent');
+
+  const zoneColors = {
+    perth: 'var(--primary-light)', wedding: 'var(--accent)',
+    kalgoorlie: '#8e44ad', travel: '#e74c3c', daytrip: '#27ae60'
+  };
+
+  content.innerHTML = `
+    <h3 style="color:${zoneColors[td.zone]};">Hari ${td.day} — ${td.date} (${td.dow})</h3>
+    <div style="margin: 8px 0 16px;"><span class="cal-area" style="background:${zoneColors[td.zone]};font-size:0.85em;padding:4px 10px;">${td.highlight}</span></div>
+    <h4 style="font-size:0.9em;margin-bottom:8px;color:var(--text-light);">Aktiviti:</h4>
+    <div style="font-size:0.9em;">
+      ${td.activities.map(a => {
+        const parts = a.split(' - ');
+        return `<div style="display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f0f2f5;">
+          <span style="flex:0 0 60px;font-weight:600;color:${zoneColors[td.zone]};font-size:0.9em;">${parts[0]}</span>
+          <span>${parts.slice(1).join(' - ')}</span>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+
+  overlay.classList.add('active');
+  popup.classList.add('active');
+}
+
+document.getElementById('qvOverlay').onclick = () => {
+  document.getElementById('qvOverlay').classList.remove('active');
+  document.getElementById('qvPopup').classList.remove('active');
+};
+document.getElementById('qvClose').onclick = () => {
+  document.getElementById('qvOverlay').classList.remove('active');
+  document.getElementById('qvPopup').classList.remove('active');
+};
+
+// Build all calendar views
+buildCalendar();
+buildZoneTimeline();
+buildDailySummary();
+
 // ===== COUNTDOWN =====
 function updateCountdown() {
   const target = new Date('2026-06-02T08:55:00+08:00');
