@@ -548,6 +548,84 @@
     .act-card .act-img { width: 100%; height: 60px; font-size: 1.8em; }
   }
 
+  /* Destination Gallery */
+  .dest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .dest-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .dest-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+  .dest-card .dest-img {
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+  }
+  .dest-card .dest-img iframe { width: 100%; height: 100%; border: none; pointer-events: none; }
+  .dest-card .dest-img .dest-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    color: white;
+    padding: 24px 14px 10px;
+  }
+  .dest-card .dest-img .dest-overlay h4 { font-size: 1.05em; }
+  .dest-card .dest-body { padding: 14px; }
+  .dest-card .dest-body .dest-meta { font-size: 0.8em; color: var(--text-light); margin-bottom: 8px; }
+  .dest-card .dest-body p { font-size: 0.85em; line-height: 1.5; }
+  .dest-card .dest-body .dest-links { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .dest-card .dest-body .dest-links a {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 5px 12px; border-radius: 6px;
+    font-size: 0.8em; font-weight: 600;
+    background: #eaf2f8; color: var(--primary-light);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .dest-card .dest-body .dest-links a:hover { background: #d4e6f1; text-decoration: none; }
+
+  .dest-section-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--primary-light);
+  }
+  .dest-section-title:first-child { margin-top: 0; }
+
+  .transport-showcase {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .transport-showcase .transport-img {
+    flex: 0 0 300px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f0f4f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .transport-showcase .transport-img iframe { width: 100%; height: 100%; border: none; }
+  .transport-showcase .transport-details { flex: 1; min-width: 250px; }
+
+  @media (max-width: 600px) {
+    .dest-grid { grid-template-columns: 1fr; }
+    .dest-card .dest-img { height: 140px; }
+    .transport-showcase { flex-direction: column; }
+    .transport-showcase .transport-img { flex: none; width: 100%; height: 160px; }
+  }
+
   /* Print */
   @media print {
     .tab-nav { display: none; }
@@ -591,6 +669,7 @@
   <button data-tab="wedding">Majlis Kahwin</button>
   <button data-tab="kalgoorlie">Kalgoorlie</button>
   <button data-tab="checklist">Checklist</button>
+  <button data-tab="destinasi">Destinasi</button>
   <button data-tab="map">Peta</button>
 </div>
 
@@ -2056,6 +2135,341 @@
   </div>
 </div>
 
+<!-- ========== DESTINASI ========== -->
+<div class="tab-content" id="tab-destinasi">
+
+  <!-- Transport -->
+  <div class="card">
+    <h3>Kenderaan Kita</h3>
+    <div class="transport-showcase">
+      <div class="transport-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!4v1!6m8!1m7!1sSKVZWuRjlBRp5zR2RqDkwQ!2m2!1d-31.94428!2d115.96938!3f200!4f0!5f0.7820865974627469" allowfullscreen loading="lazy" title="Perth Airport pickup"></iframe>
+      </div>
+      <div class="transport-details">
+        <h4 style="color: var(--primary); margin-bottom: 8px;">2x Ford Tourneo Titanium X</h4>
+        <table style="font-size: 0.9em;">
+          <tr><td style="width:100px; font-weight:600;">Jenis</td><td>Van / People Mover</td></tr>
+          <tr><td style="font-weight:600;">Kapasiti</td><td>8 tempat duduk, 5 pintu</td></tr>
+          <tr><td style="font-weight:600;">Transmisi</td><td>Automatic</td></tr>
+          <tr><td style="font-weight:600;">Pickup</td><td>Perth Airport, 2 Jun 10:00 AM</td></tr>
+          <tr><td style="font-weight:600;">Return</td><td>Perth Airport, 16 Jun 10:00 AM</td></tr>
+          <tr><td style="font-weight:600;">Total</td><td><strong>RM 27,283.16</strong> (2 vans)</td></tr>
+        </table>
+        <div style="margin-top: 10px;">
+          <span class="status-badge status-confirmed">BOTH CONFIRMED</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Penginapan Map -->
+  <div class="card">
+    <h3>Tempat Penginapan</h3>
+    <div class="dest-grid">
+      <div class="dest-card">
+        <div class="dest-img">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384.5!2d115.711!3d-32.542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32981e1f3b0b55%3A0x4f0c5a2e2a3b4c5d!2s2+Baruna+Ct%2C+Halls+Head+WA+6210!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Halls Head Airbnb"></iframe>
+          <div class="dest-overlay"><h4>Airbnb Halls Head</h4></div>
+        </div>
+        <div class="dest-body">
+          <div class="dest-meta">2-8 Jun (6 malam) | Hosted by Beth</div>
+          <p>2 Baruna Court, Halls Head WA 6210. Dekat pantai Halls Head Beach & Mandurah (~15 min).</p>
+          <div class="dest-links">
+            <a href="https://www.google.com/maps/place/2+Baruna+Ct,+Halls+Head+WA+6210,+Australia" target="_blank">Buka Google Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card">
+        <div class="dest-img">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13800!2d121.46!3d-30.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a4d6885a2c1e8c1%3A0x504f0b535df5b80!2sKalgoorlie-Boulder+WA!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Kalgoorlie Airbnb"></iframe>
+          <div class="dest-overlay"><h4>Airbnb Somerville, Kalgoorlie</h4></div>
+        </div>
+        <div class="dest-body">
+          <div class="dest-meta">8-11 Jun (3 malam) | Airbnb Management Kalgoorlie</div>
+          <p>Somerville area, Kalgoorlie. Dekat Super Pit, Museum, dan rumah Mak Imah.</p>
+          <div class="dest-links">
+            <a href="https://www.google.com/maps/place/Somerville,+Kalgoorlie-Boulder+WA+6430" target="_blank">Buka Google Maps</a>
+          </div>
+        </div>
+      </div>
+      <div class="dest-card" style="border: 2px dashed var(--warning);">
+        <div class="dest-img" style="background: #fef9e7; display: flex; align-items: center; justify-content: center;">
+          <div style="text-align: center; padding: 20px;">
+            <div style="font-size: 3em;">&#127968;</div>
+            <div style="font-weight: 700; color: var(--warning); margin-top: 8px;">BELUM BOOK</div>
+          </div>
+        </div>
+        <div class="dest-body">
+          <div class="dest-meta">11-15 Jun (4 malam) | Perth Area</div>
+          <p>Perlu cari penginapan Perth area — dekat CBD atau airport untuk malam terakhir sebelum flight.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fasa 1: Halls Head / Mandurah -->
+  <div class="dest-section-title">Fasa 1: Halls Head & Mandurah Area (2-7 Jun)</div>
+  <div class="dest-grid">
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384!2d115.7!3d-32.52!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a3298380fcab433%3A0xf00f63a3a7579e0!2sMandurah+Performing+Arts+Centre!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Mandurah"></iframe>
+        <div class="dest-overlay"><h4>Mandurah Boardwalk</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 2 | ~15 min dari rumah | Free</div>
+        <p>Waterfront cantik, pelican feeding, street art, kedai souvenir. Dolphin Cruise dari jetty (~AUD $30/pax).</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Mandurah+Eastern+Foreshore" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3384!2d115.63!3d-32.77!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a329de2b2a2c5e7%3A0xf00f63a3a757be0!2sLake+Clifton+Thrombolites!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Thrombolites"></iframe>
+        <div class="dest-overlay"><h4>Thrombolites, Lake Clifton</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 2 | ~30 min south | Free</div>
+        <p>Living fossils 2,000+ tahun — batu karang hidup unik di dunia. Boardwalk 200m ke tengah tasik.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Lake+Clifton+Thrombolites" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380!2d115.84!3d-31.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32baf4a5a0c73d%3A0x504f0b535df4e30!2sKings+Park+and+Botanic+Garden!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Kings Park"></iframe>
+        <div class="dest-overlay"><h4>Kings Park & Botanic Garden</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 3 | Perth CBD | Free</div>
+        <p>400 hektar taman dalam kota. Panorama Perth skyline + Swan River. DNA Tower, War Memorial, treetop walkway.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Kings+Park+and+Botanic+Garden" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380!2d115.856!3d-31.958!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32bad5cee3dde5%3A0xb77b57cc2cae8ed7!2sElizabeth+Quay!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Elizabeth Quay"></iframe>
+        <div class="dest-overlay"><h4>Elizabeth Quay</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 3 | Perth CBD | Free</div>
+        <p>Waterfront modern — Spanda sculpture 15m, BHP Water Park, Bell Tower. Photo spot terbaik Perth.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Elizabeth+Quay" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3380!2d115.86!3d-31.95!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32bad1f4e9b06f%3A0xd93e3b8d2b954ae5!2sWA+Museum+Boola+Bardip!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="WA Museum"></iframe>
+        <div class="dest-overlay"><h4>WA Museum Boola Bardip</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 3 | Perth Cultural Centre | Free</div>
+        <p>Museum world-class (2020). Dinosaur fossils, blue whale skeleton, meteorites, Aboriginal art. FREE!</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/WA+Museum+Boola+Bardip" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3378!2d116.03!3d-31.877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32b989cff3591f%3A0x1ca56f7835f0e820!2sCaversham+Wildlife+Park!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Caversham Wildlife"></iframe>
+        <div class="dest-overlay"><h4>Caversham Wildlife Park</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 4 | Whiteman Park | ~AUD $35/pax</div>
+        <p>Pegang koala, bagi makan kangaroo tangan terbuka, tengok wombat, Tasmanian devil, farm show.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Caversham+Wildlife+Park" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3382!2d115.748!3d-32.056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32a5517c24e085%3A0x504f0b535df53a0!2sFremantle+Markets!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Fremantle Markets"></iframe>
+        <div class="dest-overlay"><h4>Fremantle Markets</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 4 (Jumaat) | Fremantle | Free entry</div>
+        <p>Pasar tradisional sejak 1897. 150+ stalls — buah, keju, handicraft, opal, didgeridoo, souvenirs. Live music!</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Fremantle+Markets" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3381!2d115.751!3d-31.993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32a4f1f0a0e9c5%3A0x504f0b535df5770!2sCottesloe+Beach!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Cottesloe Beach"></iframe>
+        <div class="dest-overlay"><h4>Cottesloe Beach</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 4 | Cottesloe | Free</div>
+        <p>Pantai paling ikonik Perth — pine trees, white sand, turquoise water. Sunset ~5:20 PM.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Cottesloe+Beach" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Majlis Kahwin -->
+  <div class="dest-section-title" style="border-left-color: var(--accent);">Majlis Kahwin (6 Jun)</div>
+  <div class="dest-grid">
+    <div class="dest-card" style="border-color: var(--accent);">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3378!2d116.035!3d-31.847!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32b4f2a9f3c5d7%3A0x1234567890abcdef!2s5+Sudbury+Way%2C+Dayton+WA+6055!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Wedding venue"></iframe>
+        <div class="dest-overlay" style="background: linear-gradient(transparent, rgba(230,126,34,0.8));"><h4>Majlis Perkahwinan — 5 Sudbury Way, Dayton</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Sabtu, 6 Jun | Dayton, Perth WA 6055 | ~1 jam dari Halls Head</div>
+        <p>Tujuan utama trip — majlis perkahwinan anak Mak Imah. Suburb residensi utara Perth.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/5+Sudbury+Way,+Dayton+WA+6055" target="_blank">Google Maps</a>
+          <a href="https://www.google.com/maps/dir/2+Baruna+Court,+Halls+Head+WA+6210/5+Sudbury+Way,+Dayton+WA+6055" target="_blank">Directions dari Halls Head</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fasa 2: Kalgoorlie -->
+  <div class="dest-section-title" style="border-left-color: #8e44ad;">Fasa 2: Kalgoorlie — Gold Rush Country (8-11 Jun)</div>
+  <div class="dest-grid">
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6900!2d121.5!3d-30.773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a4d68c3dac0e413%3A0xb91b82f5b5f0ae5a!2sFIMISTON+OPEN+PIT+LOOKOUT!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Super Pit"></iframe>
+        <div class="dest-overlay"><h4>KCGM Super Pit Lookout</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 8 | Boulder, Kalgoorlie | Free</div>
+        <p>Lubang lombong emas terbuka TERBESAR Australia — 3.5 km panjang, 600m dalam. Truk besar nampak macam semut!</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/FIMISTON+OPEN+PIT+LOOKOUT" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3450!2d121.47!3d-30.749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a4d689e62b1a6c5%3A0xb6b4e37e2f23c6f5!2sMuseum+of+the+Goldfields!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Museum Goldfields"></iframe>
+        <div class="dest-overlay"><h4>Museum of the Goldfields</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 8 | 17 Hannan St, Kalgoorlie | Free</div>
+        <p>Sejarah Gold Rush 1890s. Gold vault dengan emas sebenar. Naik Ivanhoe Headframe — view 360° Kalgoorlie.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Museum+of+the+Goldfields" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6920!2d121.16!3d-31.167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a4d7faa11a8a853%3A0x504f0b535df54d0!2sCoolgardie+WA!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Coolgardie"></iframe>
+        <div class="dest-overlay"><h4>Coolgardie Ghost Town</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 9 | ~35 km dari Kalgoorlie | Free</div>
+        <p>Ghost town Gold Rush — pernah 15,000 penduduk, sekarang ~800. Heritage buildings, cemetery pelombong 1890s.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Coolgardie+WA" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fasa 3: Perth Area -->
+  <div class="dest-section-title" style="border-left-color: var(--success);">Fasa 3: Perth Area — Explore & Shopping (11-15 Jun)</div>
+  <div class="dest-grid">
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6780!2d115.16!3d-30.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32e67be99f9a47%3A0x504f0b535df44f0!2sPinnacles+Desert!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Pinnacles"></iframe>
+        <div class="dest-overlay"><h4>Pinnacles Desert</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 11 | Nambung National Park | AUD $15/kereta</div>
+        <p>Ribuan tiang batu kapur dari pasir kuning — landscape macam planet Mars! Drive loop 4 km atau jalan kaki.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Pinnacles+Desert" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6760!2d115.32!3d-31.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32f0d9d0c6e4a1%3A0x504f0b535df4510!2sLancelin+Sand+Dunes!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Lancelin"></iframe>
+        <div class="dest-overlay"><h4>Lancelin Sand Dunes</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 11 | Lancelin | ~AUD $15 board rental</div>
+        <p>SANDBOARDING! Bukit pasir putih besar — slide turun macam snowboard. Fun gila semua umur! View Indian Ocean dari puncak.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Lancelin+Sand+Dunes" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13600!2d115.51!3d-32.007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32c4e08ea9b195%3A0x504f0b535df4350!2sRottnest+Island!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Rottnest Island"></iframe>
+        <div class="dest-overlay"><h4>Rottnest Island — Quokka!</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 12 | Ferry dari Fremantle | AUD $70-90 return</div>
+        <p>WAJIB! Selfie dengan quokka — "happiest animal on earth". Pantai turquoise crystal clear macam Maldives. Basikal atau bus tour.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Rottnest+Island" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3378!2d116.01!3d-31.784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32b6a91ed1f7d5%3A0xf53a63e4bf1c36ef!2sMargaret+River+Chocolate+Company!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Chocolate Company"></iframe>
+        <div class="dest-overlay"><h4>Margaret River Chocolate Co.</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 13 | Swan Valley | Free tasting!</div>
+        <p>FREE chocolate tasting! Rows of samples — dark, milk, white, fruit, nut. Best souvenir bawak balik Malaysia!</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Margaret+River+Chocolate+Company,+Swan+Valley" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3379!2d115.756!3d-31.895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32a56aaac6e697%3A0x504f0b535df5660!2sScarborough+Beach!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Scarborough Beach"></iframe>
+        <div class="dest-overlay"><h4>Scarborough Beach</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 13 | Scarborough | Free</div>
+        <p>Pantai popular Perth — surfers, cafes, playground, promenade. Sunset view cantik ~5:20 PM.</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Scarborough+Beach" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+    <div class="dest-card">
+      <div class="dest-img">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3378!2d115.888!3d-31.863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2a32bb12af0346b1%3A0x80c32b766e287c13!2sHarbour+Town+Perth!5e0!3m2!1sen!2sau!4v1" loading="lazy" title="Harbour Town"></iframe>
+        <div class="dest-overlay"><h4>Harbour Town Perth (Outlet)</h4></div>
+      </div>
+      <div class="dest-body">
+        <div class="dest-meta">Hari 6 & 14 | West Perth | Shopping</div>
+        <p>Premium outlet mall — Nike, Adidas, Coach, Calvin Klein, Tommy Hilfiger. Harga 30-70% off retail!</p>
+        <div class="dest-links">
+          <a href="https://www.google.com/maps/place/Harbour+Town+Perth" target="_blank">Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Route Overview Map -->
+  <div class="card" style="margin-top: 24px;">
+    <h3>Route Keseluruhan</h3>
+    <p style="margin-bottom: 12px; font-size: 0.85em; color: var(--text-light);">Perth Airport → Halls Head → Perth City → Fremantle → Dayton → Kalgoorlie → Perth → Pinnacles → Rottnest → Perth Airport</p>
+    <div id="map-route" style="height: 450px; border-radius: 12px;"></div>
+  </div>
+</div>
+
 <!-- ========== MAP ========== -->
 <div class="tab-content" id="tab-map">
   <div class="card">
@@ -2311,6 +2725,60 @@ document.getElementById('qvClose').onclick = () => {
   document.getElementById('qvPopup').classList.remove('active');
 };
 
+// ===== ROUTE MAP (Destinasi tab) =====
+let routeMap;
+function initRouteMap() {
+  if (routeMap) return;
+  const el = document.getElementById('map-route');
+  if (!el) return;
+  routeMap = L.map('map-route').setView([-31.5, 118], 7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(routeMap);
+
+  const stops = [
+    { pos: locations.perthAirport, label: '1. Perth Airport (Tiba & Balik)', color: 'red', num: '1' },
+    { pos: [-32.542, 115.711], label: '2. Halls Head Airbnb (6 malam)', color: '#27ae60', num: '2' },
+    { pos: locations.mandurah, label: '3. Mandurah (Dolphin Cruise)', color: 'blue', num: '3' },
+    { pos: locations.kingspark, label: '4. Kings Park, Perth', color: 'blue', num: '4' },
+    { pos: locations.fremantle, label: '5. Fremantle (Markets + Prison)', color: 'blue', num: '5' },
+    { pos: locations.caversham, label: '6. Caversham Wildlife Park', color: 'blue', num: '6' },
+    { pos: locations.cottesloe, label: '7. Cottesloe Beach', color: 'blue', num: '7' },
+    { pos: locations.dayton, label: '8. Majlis Kahwin, Dayton', color: '#e67e22', num: '8' },
+    { pos: locations.kalgoorlie, label: '9. Kalgoorlie (3 malam)', color: '#8e44ad', num: '9' },
+    { pos: locations.superPit, label: '10. Super Pit Lookout', color: '#8e44ad', num: '10' },
+    { pos: locations.pinnacles, label: '11. Pinnacles Desert', color: 'blue', num: '11' },
+    { pos: locations.lancelin, label: '12. Lancelin Sand Dunes', color: 'blue', num: '12' },
+    { pos: locations.rottnest, label: '13. Rottnest Island (Quokka!)', color: 'blue', num: '13' },
+    { pos: locations.swanValley, label: '14. Swan Valley (Chocolate!)', color: 'blue', num: '14' },
+    { pos: locations.scarborough, label: '15. Scarborough Beach', color: 'blue', num: '15' },
+  ];
+
+  stops.forEach(s => {
+    const icon = L.divIcon({
+      className: '',
+      html: `<div style="background:${s.color};width:24px;height:24px;border-radius:50%;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;color:white;font-size:10px;font-weight:700;">${s.num}</div>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+    });
+    L.marker(s.pos, { icon }).addTo(routeMap).bindPopup(`<strong>${s.label}</strong>`);
+  });
+
+  // Draw main route phases
+  // Phase 1: Airport → Halls Head
+  L.polyline([locations.perthAirport, [-32.542, 115.711]], { color: '#27ae60', weight: 3, opacity: 0.8 }).addTo(routeMap);
+  // Phase 2: Halls Head → Dayton (wedding)
+  L.polyline([[-32.542, 115.711], locations.dayton], { color: '#e67e22', weight: 3, dashArray: '8,6', opacity: 0.8 }).addTo(routeMap);
+  // Phase 3: Perth → Kalgoorlie
+  L.polyline([locations.perthAirport, locations.merredin, locations.coolgardie, locations.kalgoorlie], { color: '#8e44ad', weight: 3, opacity: 0.8 }).addTo(routeMap);
+  // Phase 4: Perth → Pinnacles (north)
+  L.polyline([locations.perthCBD, locations.lancelin, locations.pinnacles], { color: '#2980b9', weight: 2, dashArray: '6,4', opacity: 0.7 }).addTo(routeMap);
+  // Phase 5: Fremantle → Rottnest
+  L.polyline([locations.fremantle, locations.rottnest], { color: '#2980b9', weight: 2, dashArray: '4,4', opacity: 0.7 }).addTo(routeMap);
+
+  setTimeout(() => routeMap.invalidateSize(), 100);
+}
+
 // Build all calendar views
 buildCalendar();
 buildZoneTimeline();
@@ -2350,6 +2818,7 @@ document.querySelectorAll('.tab-nav button').forEach(btn => {
 
     // Init maps when tab is shown
     if (btn.dataset.tab === 'map') initMainMap();
+    if (btn.dataset.tab === 'destinasi') initRouteMap();
     if (btn.dataset.tab === 'wedding') initWeddingMap();
     if (btn.dataset.tab === 'kalgoorlie') initKalgoorlieMap();
   });
