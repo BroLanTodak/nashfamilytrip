@@ -651,10 +651,7 @@
   <p>Family Trip &amp; Majlis Perkahwinan</p>
   <div class="dates">2 Jun - 16 Jun 2026 &bull; 14 Malam &bull; 10 Orang</div>
   <div class="countdown-bar" id="countdown">
-    <div class="countdown-item"><span class="num" id="cd-days">--</span><span class="label">Hari</span></div>
-    <div class="countdown-item"><span class="num" id="cd-hrs">--</span><span class="label">Jam</span></div>
-    <div class="countdown-item"><span class="num" id="cd-min">--</span><span class="label">Minit</span></div>
-    <div class="countdown-item"><span class="num" id="cd-sec">--</span><span class="label">Saat</span></div>
+    <div class="countdown-item"><span class="num" id="cd-day">--</span><span class="label" id="cd-label">Hari ke-?</span></div>
   </div>
 </div>
 
@@ -767,13 +764,13 @@
         </div>
         <span class="status-badge status-pending">PENDING</span>
       </div>
-      <div style="display: flex; align-items: center; gap: 12px; background: #fef9e7; border-radius: 10px; padding: 12px 16px; border-left: 4px solid var(--warning);">
+      <div style="display: flex; align-items: center; gap: 12px; background: #e8f8ef; border-radius: 10px; padding: 12px 16px; border-left: 4px solid var(--success);">
         <span style="font-size: 1.3em;">&#128737;</span>
         <div style="flex: 1;">
           <div style="font-weight: 600; font-size: 0.95em;">Travel Insurance</div>
-          <div style="font-size: 0.8em; color: var(--text-light);">10 orang, 14 hari coverage. Boleh beli online sebelum fly.</div>
+          <div style="font-size: 0.8em; color: var(--text-light);">10 orang, 14 hari — dah settle.</div>
         </div>
-        <span class="status-badge status-pending">PENDING</span>
+        <span class="status-badge status-confirmed">DONE</span>
       </div>
     </div>
     <div style="text-align: center; margin-top: 16px;">
@@ -2223,8 +2220,8 @@
     <div class="checklist-item">
       <input type="checkbox" id="d3">
       <label for="d3">
-        <span class="title">Travel Insurance (10 pax)</span> <span class="status-badge status-pending">PENDING</span>
-        <br><span class="detail">Cover medical, luggage, trip cancellation. AIA / Allianz / Tune Protect. Kalgoorlie drive = extra important.</span>
+        <span class="title">Travel Insurance (10 pax)</span> <span class="status-badge status-confirmed">CONFIRMED</span>
+        <br><span class="detail">Cover medical, luggage, trip cancellation. Dah settle sebelum fly.</span>
       </label>
     </div>
     <div class="checklist-item">
@@ -2927,29 +2924,27 @@ buildCalendar();
 buildZoneTimeline();
 buildDailySummary();
 
-// ===== COUNTDOWN =====
-function updateCountdown() {
-  const target = new Date('2026-06-02T08:55:00+08:00');
+// ===== TRIP DAY TRACKER =====
+function updateTripDay() {
+  const start = new Date('2026-06-02T00:00:00+08:00');
+  const end = new Date('2026-06-16T23:59:59+08:00');
   const now = new Date();
-  const diff = target - now;
-  if (diff <= 0) {
-    document.getElementById('cd-days').textContent = '0';
-    document.getElementById('cd-hrs').textContent = '0';
-    document.getElementById('cd-min').textContent = '0';
-    document.getElementById('cd-sec').textContent = '0';
-    return;
+  if (now < start) {
+    const diff = start - now;
+    const d = Math.ceil(diff / 86400000);
+    document.getElementById('cd-day').textContent = d;
+    document.getElementById('cd-label').textContent = 'hari lagi';
+  } else if (now > end) {
+    document.getElementById('cd-day').textContent = '✓';
+    document.getElementById('cd-label').textContent = 'Trip selesai!';
+  } else {
+    const dayNum = Math.floor((now - start) / 86400000) + 1;
+    document.getElementById('cd-day').textContent = dayNum;
+    document.getElementById('cd-label').textContent = 'Hari ke-' + dayNum + ' dari 15';
   }
-  const d = Math.floor(diff / 86400000);
-  const h = Math.floor((diff % 86400000) / 3600000);
-  const m = Math.floor((diff % 3600000) / 60000);
-  const s = Math.floor((diff % 60000) / 1000);
-  document.getElementById('cd-days').textContent = d;
-  document.getElementById('cd-hrs').textContent = h;
-  document.getElementById('cd-min').textContent = m;
-  document.getElementById('cd-sec').textContent = s;
 }
-updateCountdown();
-setInterval(updateCountdown, 1000);
+updateTripDay();
+setInterval(updateTripDay, 60000);
 
 // ===== TABS =====
 document.querySelectorAll('.tab-nav button').forEach(btn => {
