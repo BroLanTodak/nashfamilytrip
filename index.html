@@ -306,6 +306,7 @@
   .checklist-item label { cursor: pointer; flex: 1; }
   .checklist-item label .title { font-weight: 600; font-size: 0.95em; }
   .checklist-item label .detail { font-size: 0.85em; color: var(--text-light); }
+  .checklist-item input[type="checkbox"]:checked + label .title { text-decoration: line-through; opacity: 0.5; }
 
   .status-badge {
     display: inline-block;
@@ -2597,6 +2598,90 @@
 
 <!-- ========== CHECKLIST ========== -->
 <div class="tab-content" id="tab-checklist">
+
+  <!-- Senarai Tempat Tracker -->
+  <div class="card">
+    <h3>Senarai Tempat</h3>
+    <p style="color: var(--text-light); font-size: 0.85em; margin-bottom: 12px;">Tick tempat yang dah pergi. <span style="text-decoration: line-through; opacity: 0.5;">Strikethrough</span> = dah selesai.</p>
+
+    <h4 style="margin: 16px 0 8px; color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 4px;">Fasa 1 — Halls Head / Mandurah (2-7 Jun)</h4>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 1 — Selasa, 2 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t1a" checked><label for="t1a"><span class="title">Perth Airport — Tiba & Pickup Van</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t1b" checked><label for="t1b"><span class="title">Halls Head — Check-in Airbnb</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t1c" checked><label for="t1c"><span class="title">Woolworths Mandurah Forum — Groceries</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 2 — Rabu, 3 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t2a" checked><label for="t2a"><span class="title">Mandurah Boardwalk & Waterfront</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t2b" checked><label for="t2b"><span class="title">Cicerello's Mandurah — Lunch</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t2c" checked><label for="t2c"><span class="title">Mandurah Dolphin Cruise</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t2d" checked><label for="t2d"><span class="title">Thrombolites at Lake Clifton</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t2e" checked><label for="t2e"><span class="title">Halls Head Beach Sunset Walk</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 3 — Khamis, 4 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t3a" checked><label for="t3a"><span class="title">Kings Park & Botanic Garden</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t3b" checked><label for="t3b"><span class="title">Murray Street Mall + Hay Street Mall</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 4 — Jumaat, 5 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t4a"><label for="t4a"><span class="title">Caversham Wildlife Park</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t4b"><label for="t4b"><span class="title">Lepak Rumah Mak Imah — 5 Sudbury Way, Dayton</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 5 — Sabtu, 6 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t5a"><label for="t5a"><span class="title">Majlis Perkahwinan Anak Mak Imah — Dayton</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 6 — Ahad, 7 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t6a"><label for="t6a"><span class="title">Harbour Town Perth — Outlet Shopping</span></label></div>
+
+    <h4 style="margin: 20px 0 8px; color: #e67e22; border-bottom: 2px solid #e67e22; padding-bottom: 4px;">Fasa 2 — Kalgoorlie (8-11 Jun)</h4>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 7 — Isnin, 8 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t7a"><label for="t7a"><span class="title">Pitstop Northam</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t7b"><label for="t7b"><span class="title">Pitstop Merredin (Halfway)</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t7c"><label for="t7c"><span class="title">Tiba Kalgoorlie — Somerville Airbnb</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t7d"><label for="t7d"><span class="title">Visit Rumah Mak Imah, Kalgoorlie</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 8 — Selasa, 9 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t8a"><label for="t8a"><span class="title">KCGM Super Pit Lookout</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t8b"><label for="t8b"><span class="title">Museum of the Goldfields</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t8c"><label for="t8c"><span class="title">Hannan Street — Lunch</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t8d"><label for="t8d"><span class="title">Hammond Park</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 9 — Rabu, 10 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t9a"><label for="t9a"><span class="title">Coolgardie Day Trip</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t9b"><label for="t9b"><span class="title">Questa Casa (Hay Street, Kalgoorlie)</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 10 — Khamis, 11 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t10a"><label for="t10a"><span class="title">Goodbye Mak Imah + Drive Balik Perth</span></label></div>
+
+    <h4 style="margin: 20px 0 8px; color: #27ae60; border-bottom: 2px solid #27ae60; padding-bottom: 4px;">Fasa 3 — Perth Area (12-16 Jun)</h4>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 11 — Jumaat, 12 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t11a"><label for="t11a"><span class="title">Ferry ke Rottnest Island</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t11b"><label for="t11b"><span class="title">Selfie dengan Quokka!</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t11c"><label for="t11c"><span class="title">Pinky Beach, The Basin + Little Salmon Bay</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t11d"><label for="t11d"><span class="title">Rottnest Bakery / General Store — Lunch</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 12 — Sabtu, 13 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t12a"><label for="t12a"><span class="title">Pinnacles Desert (Nambung National Park)</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t12b"><label for="t12b"><span class="title">Lancelin Sand Dunes — Sandboarding!</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 13 — Ahad, 14 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t13a"><label for="t13a"><span class="title">Margaret River Chocolate Company</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t13b"><label for="t13b"><span class="title">The House of Honey</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t13c"><label for="t13c"><span class="title">Morish Nuts + Swan Valley Cafe</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t13d"><label for="t13d"><span class="title">Midland Gate Shopping Centre</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t13e"><label for="t13e"><span class="title">Elizabeth Quay</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t13f"><label for="t13f"><span class="title">Heirisson Island — Kangaroo!</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t13g"><label for="t13g"><span class="title">City Beach</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t13h"><label for="t13h"><span class="title">Scarborough Beach Sunset</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 14 — Isnin, 15 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t14a"><label for="t14a"><span class="title">WA Museum Boola Bardip</span></label></div>
+    <div class="checklist-item"><input type="checkbox" id="t14b"><label for="t14b"><span class="title">DFO Perth / Last Minute Shopping</span></label></div>
+
+    <div style="font-weight: 600; color: var(--text-light); margin: 10px 0 4px; font-size: 0.8em;">HARI 15 — Selasa, 16 Jun</div>
+    <div class="checklist-item"><input type="checkbox" id="t15a"><label for="t15a"><span class="title">MH126 — Balik Malaysia!</span></label></div>
+  </div>
 
   <!-- Booking & Transport -->
   <div class="card">
